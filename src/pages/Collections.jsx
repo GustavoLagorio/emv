@@ -60,8 +60,8 @@ export const Collections = () => {
     function handleScroll() {
       const vh = window.innerHeight;
       const scrollPosition = window.scrollY;
-      const posicionActivacion = vh * 0.3;
-      const posicionDesactivacion = vh * 0.8;
+      const posicionActivacion = vh * 0.4;
+      const posicionDesactivacion = vh * 0.7;
 
       // Determinar qué colecciones se han activado
       const nuevasActivaciones = {};
