@@ -1,0 +1,24 @@
+/** VARS Y MIXINS **/
+
+@import './scss/abstracts/vars';
+
+/** RESET **/
+
+@import './scss/base/resets';
+
+/** BASE **/
+
+@import './scss/base/base';
+
+/** LAYOUT **/
+
+@import './scss/layout/header';
+
+/** PAGES **/
+
+@import './scss/pages/home';
+@import './scss/pages/services';
+@import './scss/pages/collections';
+@import './scss/pages/collection';
+@import './scss/pages/about';
+@import './scss/pages/contact';

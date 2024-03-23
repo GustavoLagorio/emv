@@ -1,0 +1,56 @@
+h1 {
+  font-family: $heading-font;
+  font-weight: $ligth;
+  font-size: 5rem;
+  letter-spacing: 0.1rem;
+}
+
+@media(min-width: 768px) {
+
+  h1 {
+    font-size: 7rem;
+  }
+}
+
+h2,
+h3 {
+  font-family: $heading-font;
+  font-weight: $ligth;
+  font-size: 4.5rem;
+}
+
+@media (min-width: 768px) {
+  h2,
+  h3 {
+    font-size: 7rem;
+  }
+
+  .heading-secundary {
+    letter-spacing: 0.4rem;
+  }
+}
+
+p {
+  font-family: $text-font;
+}
+
+a {
+  text-decoration: none;
+  color: $links;
+  font-size: 2rem;
+  font-weight: $ligth;
+
+  span{
+
+    svg {
+      color: $links;
+    }
+  }  
+}
+
+
+
+.link {
+  display: flex;
+  align-items: center;
+}

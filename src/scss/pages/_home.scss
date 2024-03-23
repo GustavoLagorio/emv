@@ -1,0 +1,47 @@
+.home {
+  .home-hero {
+    height: 105vh;
+    overflow: hidden;
+
+    .home-hero-title {
+      position: fixed;
+      top: 80%;
+      color: $white;
+      text-align: center;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-position: 70%;
+      object-fit: cover;
+    }
+
+    @media (min-width: 992px) {
+      img {
+        object-position: 0% 0%;
+      }
+    }
+  }
+
+  .parallax-content {
+    .links-home {
+        display: flex;
+
+      span {
+        display: flex;
+        align-items: center;
+
+        p {
+          font-size: 3rem;
+          margin: 0;
+        }
+      }
+
+      span:first-child {
+        height: 3rem;
+        padding-top: 2.5rem;
+      }
+    }
+  }
+}
