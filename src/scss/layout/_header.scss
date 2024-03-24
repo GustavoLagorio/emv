@@ -10,7 +10,7 @@
     align-items: center;
 
     .navbar-brand {
-      padding: 0 0 0 4rem;
+      padding: 0 0 0 2rem;
       height: 100%;
     }
 
@@ -19,8 +19,12 @@
       border: none;
       box-shadow: none;
 
-      .navbar-toggle-svg path {
+      .navbar-toggle svg path {
         fill: #000000;
+      }
+
+      .light path {
+        stroke: white !important;
       }
 
       .navbar-toggle-svg.open {
@@ -39,6 +43,7 @@
 .sidebar {
   position: fixed;
   top: 6vh;
+  padding-top: 3rem;
   left: -101vw; /* Oculta el menú inicialmente */
   width: 100vw;
   height: 100%;
@@ -55,28 +60,49 @@
       letter-spacing: 0.5rem;
       color: #000000;
       margin: 0 0 1rem 2rem;
-      padding: 0;      
+      padding: 0;
+      transition: all 0.5s ease-in-out;
+      
+      span {
+
+        svg {
+          display: none;
+        }
+      }
     }
 
     a:first-child {
       margin-top: 2rem;
     }
 
-    a.active::before {
-      content: "I ";
+    a.active {      
+      font-weight: $bold;
+      padding-left: 2rem;
+      display: flex;
+      align-items: center;
+
+      span {
+        svg {
+          display: block;
+          color: black;
+        }
+      }
     }
 
-    a.inactive::before {
-      content: none;
+    a.inactive {
+      font-weight: $ligth;
+      padding-left: 0;
     }
 
     a:hover {
-      background-color: #e9ecef;
+      transform: scale(1.05);
+      translate: 3rem;
     }    
   }
 
   .nav-menu-logo {
     width: 100%;
+    margin-top: 3rem;
 
     img {
       margin: 1rem 15%;

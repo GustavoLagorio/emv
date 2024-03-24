@@ -13,6 +13,8 @@
 /** LAYOUT **/
 
 @import './scss/layout/header';
+@import './scss/layout/footer';
+@import './scss/layout/contact-form';
 
 /** PAGES **/
 
@@ -21,4 +23,6 @@
 @import './scss/pages/collections';
 @import './scss/pages/collection';
 @import './scss/pages/about';
+@import './scss/pages/login';
+@import './scss/pages/admin-panel';
 @import './scss/pages/contact';

@@ -7,9 +7,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    h1 {
-    }
   }
 
   .service {
@@ -21,18 +18,21 @@
     }
 
     img {
-      height: 50vh;
+      min-height: 50vh;
       width: 100vw;
       object-fit: cover;
       margin: 2rem 0;
     }
 
-    video {
+    div {
+      video {
+        object-fit: cover;
+      }      
     }
 
     p {
       font-size: 1.8rem;
-      padding: 1rem;
+      padding: 3rem 1rem;
       width: 100%;
     }
   }

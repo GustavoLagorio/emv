@@ -9,8 +9,8 @@ const contentStylesSm = {
 };
 
 const contentStylesM = {
-  top: "10%",
-  left: "20%",
+  top: "20%",
+  left: "5%",
   position: "absolute",
 };
 

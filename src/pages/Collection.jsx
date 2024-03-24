@@ -77,7 +77,7 @@ export const Collection = () => {
               } else {
                 return (
                   <div key={item.Id} className="collection-gallery-img">
-                    <img src={item.Link} alt="" />
+                    <img src={item.Link} alt="" loading="lazy"/>
                   </div>
                 );
               }

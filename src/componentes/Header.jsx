@@ -39,6 +39,8 @@ function Header() {
     setIsOpen(false); // Cerrar el menú del sidebar al hacer clic en un enlace
   };
 
+  const isContactOrAbout =
+    location.pathname === "/contact" || location.pathname === "/about";
   return (
     <>
       <Navbar
@@ -65,39 +67,91 @@ function Header() {
             {/* SVG para el menú cerrado */}
             {!isOpen && (
               <svg
+                className={isContactOrAbout ? "light" : ""}
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-menu-2"
-                height="100%"
+                width="4rem"
+                height="4rem"
                 viewBox="0 0 24 24"
-                strokeWidth="0.5"
-                stroke="#000000"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 6l16 0" />
-                <path d="M4 12l16 0" />
-                <path d="M4 18l16 0" />
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="1"
+                >
+                  <path d="M5 5L19 19">
+                    <animate
+                      fill="freeze"
+                      attributeName="d"
+                      dur="0.4s"
+                      values="M5 5L19 19;M5 5L19 5"
+                    />
+                  </path>
+                  <path d="M12 12H12" opacity="0">
+                    <animate
+                      fill="freeze"
+                      attributeName="d"
+                      begin="0.2s"
+                      dur="0.4s"
+                      values="M12 12H12;M5 12H19"
+                    />
+                    <set attributeName="opacity" begin="0.2s" to="1" />
+                  </path>
+                  <path d="M5 19L19 5">
+                    <animate
+                      fill="freeze"
+                      attributeName="d"
+                      dur="0.4s"
+                      values="M5 19L19 5;M5 19L19 19"
+                    />
+                  </path>
+                </g>
               </svg>
             )}
 
             {/* SVG para el menú abierto */}
             {isOpen && (
               <svg
+                className={isContactOrAbout ? "light" : ""}
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-letter-x"
-                height="100%"
+                width="4rem"
+                height="4rem"
                 viewBox="0 0 24 24"
-                strokeWidth="0.5"
-                stroke="#000000"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M7 4l10 16" />
-                <path d="M17 4l-10 16" />
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="1"
+                >
+                  <path d="M5 5L19 5">
+                    <animate
+                      fill="freeze"
+                      attributeName="d"
+                      begin="0.2s"
+                      dur="0.4s"
+                      values="M5 5L19 5;M5 5L19 19"
+                    />
+                  </path>
+                  <path d="M5 12H19">
+                    <animate
+                      fill="freeze"
+                      attributeName="d"
+                      dur="0.4s"
+                      values="M5 12H19;M12 12H12"
+                    />
+                    <set attributeName="opacity" begin="0.4s" to="0" />
+                  </path>
+                  <path d="M5 19L19 19">
+                    <animate
+                      fill="freeze"
+                      attributeName="d"
+                      begin="0.2s"
+                      dur="0.4s"
+                      values="M5 19L19 19;M5 19L19 5"
+                    />
+                  </path>
+                </g>
               </svg>
             )}
           </Navbar.Toggle>
@@ -112,6 +166,23 @@ function Header() {
             onClick={handleNavLinkClick}
             reloadDocument
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3em"
+                height="4rem"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 19V5"
+                />
+              </svg>
+            </span>
             HOME
           </NavLink>
           <NavLink
@@ -120,6 +191,23 @@ function Header() {
             onClick={handleNavLinkClick}
             reloadDocument
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3em"
+                height="4rem"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 19V5"
+                />
+              </svg>
+            </span>
             SERVICES
           </NavLink>
           <NavLink
@@ -128,6 +216,23 @@ function Header() {
             onClick={handleNavLinkClick}
             reloadDocument
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3em"
+                height="4rem"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 19V5"
+                />
+              </svg>
+            </span>
             COLLECTIONS
           </NavLink>
           <NavLink
@@ -136,6 +241,23 @@ function Header() {
             onClick={handleNavLinkClick}
             reloadDocument
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3em"
+                height="4rem"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 19V5"
+                />
+              </svg>
+            </span>
             ABOUT
           </NavLink>
           <NavLink
@@ -144,10 +266,28 @@ function Header() {
             onClick={handleNavLinkClick}
             reloadDocument
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3em"
+                height="4rem"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 19V5"
+                />
+              </svg>
+            </span>
             CONTACT
           </NavLink>
           <NavLink
-            href="https://www.youtube.com/channel/UCi_cFUXozrRO66erzOTH7Uw"
+            as={Link}
+            to="https://www.youtube.com/channel/UCi_cFUXozrRO66erzOTH7Uw"
             onClick={handleNavLinkClick}
             target="_blank"
             className="inactive"

@@ -28,19 +28,22 @@
   }
 
   .collection-description {
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 1rem;
     width: 100%;
+    margin: 3rem 0;
   }
 
   .collection-gallery {
+    padding-bottom: 5rem;
 
     .collection-gallery-img {
       width: 100%;
-      
+      margin-bottom: 1rem;
+
       img {
         width: 100%;
-        min-height: 60vh;
+        max-height: 100vh;
         object-fit: cover;
         object-position: center center;
       }

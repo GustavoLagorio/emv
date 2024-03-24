@@ -1,4 +1,6 @@
 import React from "react";
+import ReactPlayer from "react-player";
+import video from "../assets/video_home.mp4";
 
 export const Services = () => {
   return (
@@ -19,7 +21,14 @@ export const Services = () => {
         </article>
         <article className="service">
           <h2>VIDEOGRAPHY</h2>
-          <video src=""></video>
+          <ReactPlayer
+            url={video}
+            playing
+            loop
+            muted
+            width="100%"
+            height="100%"
+          />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et
             mollitia, cumque molestiae corrupti similique eveniet recusandae ea,

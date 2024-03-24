@@ -1,0 +1,25 @@
+.login {
+    width: 100vw;
+    background-color: $bg-frame;
+    height: 80vh;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+
+
+    h1 {
+        text-align: center;
+    }
+
+    button {
+        background-color: $button;
+        height: 5.5rem;
+        width: 50%;
+        align-self: center;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        color: $white;
+        border-radius: 0.6rem;
+    }
+}

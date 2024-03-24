@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export const Collections = () => {
   const [collections, setCollections] = useState(null);
   const [imgMain, setImgMain] = useState(null);
-  const [activados, setActivados] = useState({});
 
   // Realizar una solicitud al servidor para obtener el Collections
   useEffect(() => {
@@ -55,46 +54,6 @@ export const Collections = () => {
     }
   }, [collections]);
 
-  //Efecto para cambio de estilo segun posicion vertical
-  useEffect(() => {
-    function handleScroll() {
-      const vh = window.innerHeight;
-      const scrollPosition = window.scrollY;
-      const posicionActivacion = vh * 0.4;
-      const posicionDesactivacion = vh * 0.7;
-
-      // Determinar qué colecciones se han activado
-      const nuevasActivaciones = {};
-      if (collections) {
-        collections.forEach((collection) => {
-          const collectionElement = document.getElementById(
-            `collection-${collection.Id}`
-          );
-          if (collectionElement) {
-            const posicionDiv =
-              collectionElement.getBoundingClientRect().top +
-              collectionElement.offsetHeight / 2;
-            if (
-              posicionDiv < posicionActivacion ||
-              posicionDiv > posicionDesactivacion
-            ) {
-              nuevasActivaciones[collection.Id] = false;
-            } else {
-              nuevasActivaciones[collection.Id] = true;
-            }
-          }
-        });
-      }
-      setActivados(nuevasActivaciones);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [collections]);
-
   return (
     <>
       <main className="collections">
@@ -113,9 +72,7 @@ export const Collections = () => {
                 <div
                   key={collection.Id}
                   id={`collection-${collection.Id}`}
-                  className={`collection ${
-                    activados[collection.Id] ? "activado" : ""
-                  }`}
+                  className="collection"
                 >
                   <img
                     src={
@@ -124,6 +81,7 @@ export const Collections = () => {
                         : ""
                     }
                     alt=""
+                    loading="lazy"
                   />
                   <h2>{collection.Title}</h2>
                 </div>

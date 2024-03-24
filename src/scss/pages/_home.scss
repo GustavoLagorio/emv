@@ -1,4 +1,6 @@
 .home {
+  background-color: $bg-frame;
+
   .home-hero {
     height: 105vh;
     overflow: hidden;
@@ -24,24 +26,82 @@
     }
   }
 
-  .parallax-content {
-    .links-home {
-        display: flex;
+  .react-parallax {
+    height: 80vh;
+    margin-top: 1rem;
 
-      span {
-        display: flex;
-        align-items: center;
+    .react-parallax-content {
+      height: 100%;
 
-        p {
-          font-size: 3rem;
-          margin: 0;
+      div {
+        .parallax-content {
+          height: 100%;
+
+          .links-home {
+            display: flex;
+
+            span {
+              display: flex;
+              align-items: center;
+
+              p {
+                font-size: 2.5rem;
+                margin: 0;
+              }
+            }
+
+            span:first-child {
+              height: 3rem;
+              padding-top: 2.5rem;
+            }
+          }
         }
       }
-
-      span:first-child {
-        height: 3rem;
-        padding-top: 2.5rem;
-      }
     }
+  }
+
+  .home-youtube {
+    height: 80vh;
+    position: relative;
+    margin-top: 1rem;
+
+    div {
+      video {
+        object-fit: cover;
+      }      
+    }
+    .video-filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.461);
+    }
+
+    .youtube-content {
+      position: absolute;
+      top: 30%;
+      left: 5%;
+
+      .links-home {
+        display: flex;
+  
+        span {
+          display: flex;
+          align-items: center;
+  
+          p {
+            font-size: 2.5rem;
+            margin: 0;
+          }
+        }
+  
+        span:first-child {
+          height: 3rem;
+          padding-top: 2.5rem;
+        }
+      }
+    }    
   }
 }
