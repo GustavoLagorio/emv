@@ -3,12 +3,14 @@ import { useLocation, NavLink, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Logo from "../assets/Logo1.png";
+import { Logo } from "./Logo";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
   const location = useLocation();
+  const [isContactOrAbout, setIsContactOrAbout] = useState(false);
+  const [svgColor, setSvgColor] = useState(null)
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -39,8 +41,22 @@ function Header() {
     setIsOpen(false); // Cerrar el menú del sidebar al hacer clic en un enlace
   };
 
-  const isContactOrAbout =
-    location.pathname === "/contact" || location.pathname === "/about";
+  useEffect(() => {
+    setIsContactOrAbout(location.pathname === "/contact" || location.pathname === "/about");
+  }, [location.pathname]);
+
+  useEffect(() => {
+    
+    if(isContactOrAbout) {
+
+      setSvgColor('white');
+
+    } else {
+
+      setSvgColor('black');
+    }
+  }, [location.pathname, isContactOrAbout])
+
   return (
     <>
       <Navbar
@@ -51,12 +67,7 @@ function Header() {
         <Container fluid>
           <Navbar.Brand>
             <Link to="/" reloadDocument>
-              <img
-                src={Logo}
-                height="100%"
-                className="d-inline-block align-top"
-                alt="Logo"
-              />
+              <Logo color={svgColor}/>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle
@@ -296,7 +307,7 @@ function Header() {
           </NavLink>
         </Nav>
         <div className="nav-menu-logo">
-          <img src={Logo} alt="logo" />
+        <Logo color="black" />
         </div>
       </div>
     </>

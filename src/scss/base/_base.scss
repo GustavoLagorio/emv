@@ -2,13 +2,14 @@ h1 {
   font-family: $heading-font;
   font-weight: $ligth;
   font-size: 5rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.3rem;
 }
 
 @media(min-width: 768px) {
 
   h1 {
     font-size: 7rem;
+    letter-spacing: 1rem;
   }
 }
 
@@ -17,6 +18,7 @@ h3 {
   font-family: $heading-font;
   font-weight: $ligth;
   font-size: 4.5rem;
+  letter-spacing: 0.4rem;
 }
 
 @media (min-width: 768px) {

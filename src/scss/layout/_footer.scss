@@ -1,12 +1,29 @@
 footer {
     width: 100%;
+    padding-top: 2rem;
 
   .footer-brand {
     width: 100%;
 
-    img {
+    svg {
       width: 60%;
       margin: 2rem 20%;
+    }
+
+    @media(min-width: 768px) {
+
+      svg {
+        width: 50%;
+        margin: 3rem 25%;
+      }
+    }
+
+    @media(min-width: 1200px) {
+
+      svg {
+        width: 40%;
+        margin: 4rem 30%;
+      }
     }
   }
 
@@ -27,20 +44,20 @@ footer {
 
     .footer-social-item {
       height: 4rem;
-      margin: 2rem;
+      margin: 2rem 1rem;
     }
 
     @media(min-width: 768px) {
       .footer-social-item {
         height: 6rem;
-        margin: 3rem;
+        margin: 3rem 1rem;
       }          
     }
 
     @media(min-width: 992px) {
       .footer-social-item {
         height: 7rem;
-        margin: 4rem;
+        margin: 4rem 2rem;
       }          
     }
   }
@@ -48,16 +65,37 @@ footer {
   .terms {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     margin-top: 3rem;
+    padding: 0;
+
     .terms-item {
         width: 33%;
+        display: flex;
+        justify-content: center;
 
         .autor-logo {
-            width: 100%;
+            width: 70%;
             height: auto;
-            object-fit: fill;
+        }
+
+        @media(min-width: 768px) {
+          .autor-logo {
+            width: 50%;
+          }
+        }
+
+        @media(min-width: 992px) {
+          .autor-logo {
+            width: 40%;
+          }
+        }
+
+        @media(min-width: 1200px) {
+          .autor-logo {
+            width: 30%;
+          }
         }
         
         p {
@@ -75,23 +113,12 @@ footer {
         }
 
         @media(min-width: 768px) {
-
-          .autor-logo {
-            width: 70%;
-            margin: 0 15%;
-          }
-
           p, a {
             font-size: 2.5rem;
           }          
         }
 
         @media(min-width: 992px) {
-
-          .autor-logo {
-            width: 60%;
-            margin: 0 20%;
-          }
 
           p, a {
             font-size: 3rem;

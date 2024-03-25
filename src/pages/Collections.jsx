@@ -83,6 +83,7 @@ export const Collections = () => {
                     alt=""
                     loading="lazy"
                   />
+                  <div className="filter-img"></div>
                   <h2>{collection.Title}</h2>
                 </div>
               </Link>

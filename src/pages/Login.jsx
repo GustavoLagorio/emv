@@ -1,25 +1,20 @@
-import React from "react";
-import GoogleLogin from "react-google-login";
+import React from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
 
-const responseGoogle = (response) => {
-  console.log(response);
-};
+const GoogleLoginButton = ({ onSuccess, onFailure }) => {
+  const { signIn, loaded } = useGoogleLogin({
+    clientId: '309513572301-370vm8smlo8a0fe6sar6u0jaej0od3qk.apps.googleusercontent.com',
+    onSuccess,
+    onFailure,
+  });
 
-export const Login = () => {
+  if (!loaded) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      <main className="login">
-        <h1>Welcome to EMV</h1>
-        <GoogleLogin
-          clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-          render={renderProps => (
-            <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Login</button>
-          )}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={"single_host_origin"}
-        />
-      </main>
-    </>
+    <button onClick={signIn}>Sign in with Google</button>
   );
-};
+}
+
+export default GoogleLoginButton;

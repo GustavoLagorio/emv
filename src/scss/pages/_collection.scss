@@ -4,6 +4,8 @@
 
   .collection-hero {
     height: 100vh;
+    display: flex;
+    justify-content: center;
 
     .collection-hero-filter {
       position: absolute;
@@ -32,6 +34,7 @@
     padding: 1rem;
     width: 100%;
     margin: 3rem 0;
+    text-align: center;
   }
 
   .collection-gallery {

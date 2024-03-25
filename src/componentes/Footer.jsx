@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/Logo1.png";
+import { Logo } from "./Logo";
 import Autor from "../assets/autor_logo.jpeg"
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export const Footer = () => {
     <>
       <footer>
         <div className="footer-brand">
-          <img src={Logo} alt="" />
+          <Logo color="black" />
         </div>
         <ul className="footer-social-list">
           <li className="footer-social-item">

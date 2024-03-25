@@ -12,6 +12,16 @@
     .navbar-brand {
       padding: 0 0 0 2rem;
       height: 100%;
+
+      a{
+        height: 100%;
+        display: flex;
+        
+        svg {
+          padding-left: 1rem;
+          width: 12rem;
+        }
+      }
     }
 
     .navbar-toggler {
@@ -54,12 +64,13 @@
 
   .nav-menu {
     width: 100%;
+    padding: 2rem 0;
 
     a {
       font-size: 3rem;
       letter-spacing: 0.5rem;
-      color: #000000;
-      margin: 0 0 1rem 2rem;
+      color: $gray;
+      margin: 0 0 2rem 2rem;
       padding: 0;
       transition: all 0.5s ease-in-out;
       
@@ -75,7 +86,8 @@
       margin-top: 2rem;
     }
 
-    a.active {      
+    a.active {
+      color: black;      
       font-weight: $bold;
       padding-left: 2rem;
       display: flex;
@@ -104,10 +116,9 @@
     width: 100%;
     margin-top: 3rem;
 
-    img {
-      margin: 1rem 15%;
-      width: 70%;
-      object-fit: cover;
+    svg {
+      margin: 2rem 25%;
+      width: 50%;
     }
   }
   

@@ -1,6 +1,7 @@
 .services {
   background-color: $bg-frame;
   width: 100vw;
+  padding-bottom: 3rem;
 
   .services-hero {
     height: 30vh;
@@ -10,30 +11,36 @@
   }
 
   .service {
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
 
     h2 {
+      font-size: 4rem;
       text-align: center;
       margin: 2rem 0;
+      color: $gray;
     }
 
     img {
       min-height: 50vh;
+      max-height: 80vh;
       width: 100vw;
       object-fit: cover;
-      margin: 2rem 0;
     }
 
     div {
       video {
+        max-height: 80vh;
         object-fit: cover;
       }      
     }
 
     p {
+      margin-top: 3rem;
       font-size: 1.8rem;
       padding: 3rem 1rem;
       width: 100%;
+      font-family: $text-font;
+      text-align: center;
     }
   }
 }

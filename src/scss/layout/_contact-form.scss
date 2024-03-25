@@ -1,9 +1,11 @@
 .contact-form {
-    padding-bottom: 6rem;
+    padding: 6rem 0 10rem 0;
 
     h2 {
       text-align: center;
-      margin: 5rem 0;
+      margin: 4rem 0;
+      font-weight: $regular;
+      font-size: 5rem;
     }
 
     .form {
@@ -13,7 +15,7 @@
       justify-content: center;
 
       div {
-        margin: 3rem 0;
+        margin: 2rem 0;
         width: 100%;
 
         .form-label {
@@ -33,7 +35,7 @@
           border: solid 1px black;
           color: black;
           font-size: 2rem;
-          border-radius: 0.6rem;
+          border-radius: 0.3rem;
         }
 
         textarea {
@@ -56,12 +58,13 @@
 
       button {
         background-color: $button;
+        margin-top: 2rem;
         height: 5.5rem;
         width: auto;
         padding: 1rem 2rem;
         font-size: 2rem;
         color: $white;
-        border-radius: 0.6rem;
+        border-radius: 0.3rem;
       }
     }
   }

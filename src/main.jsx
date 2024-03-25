@@ -9,7 +9,7 @@ import { Collection } from "./pages/Collection";
 import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
-import { Login } from "./pages/Login";
+//import { Login } from "./pages/";
 import { AdminPanel } from "./pages/AdminPanel";
 import { CreateCollection } from './pages/CreateCollection';
 import { EditCollection } from './pages/EditCollection';
@@ -56,11 +56,11 @@ const router = createBrowserRouter([
         element: <Contact />,
         errorElement: <Error404 />,
       },
-      {
+      /*{
         path: "/login",
         element: <Login />,
         errorElement: <Error404 />,
-      },
+      },*/
       {
         path: "/admin-panel",
         element: <AdminPanel />,
