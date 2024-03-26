@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 export const Collections = () => {
   const [collections, setCollections] = useState(null);
   const [imgMain, setImgMain] = useState(null);
+  const [clickedCollection, setClickedCollection] = useState({});
+  const [isWideScreen, setIsWideScreen] = useState(false);
+  const [url, setUrl] = useState("");
+  const [selectedCollection, setSelectedCollection] = useState(null);
 
-  // Realizar una solicitud al servidor para obtener el Collections
   useEffect(() => {
     const obtenerCollections = async () => {
       try {
@@ -54,41 +57,72 @@ export const Collections = () => {
     }
   }, [collections]);
 
+  const handleCollectionClick = (collectionId) => {
+    console.log(clickedCollection);
+    console.log(collectionId);
+    
+    if (selectedCollection === collectionId) {
+      window.location.href = `/collections/${collectionId}`;
+    return;
+    }
+
+    setClickedCollection(null);
+
+    setClickedCollection(collectionId);
+    setSelectedCollection(collectionId);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Verificar si el ancho de la pantalla es mayor o igual a 1200px
+      setIsWideScreen(window.innerWidth >= 1200);
+    };
+
+    // Agregar un event listener para el evento 'resize' que se activa cuando cambia el tamaño de la ventana
+    window.addEventListener("resize", handleResize);
+
+    // Llamar a handleResize una vez al inicio para inicializar el estado
+    handleResize();
+
+    // Remover el event listener al desmontar el componente para evitar memory leaks
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <main className="collections">
-        <div className="collections-hero">
-          <h1>COLLECTIONS</h1>
-        </div>
-
-        <div className="collections-list">
-          {collections &&
-            collections.map((collection) => (
+        <section className="collections-list">
+        {collections &&
+          collections.map((collection) => (
+            <div
+              key={collection.Id}
+              id={`collection-${collection.Id}`}
+              className="collection"
+              onClick={() => handleCollectionClick(collection.Id)}
+            >
               <Link
-                key={collection.Id}
-                as={Link}
-                to={`/collections/${collection.Id}`}
+                to={isWideScreen === true ? `/collections/${collection.Id}` : url}
+                className={`collection-link ${
+                  clickedCollection === collection.Id ? "active" : ""
+                }`}
               >
-                <div
-                  key={collection.Id}
-                  id={`collection-${collection.Id}`}
-                  className="collection"
-                >
-                  <img
-                    src={
-                      imgMain && imgMain[collection.Id]
-                        ? imgMain[collection.Id]
-                        : ""
-                    }
-                    alt=""
-                    loading="lazy"
-                  />
-                  <div className="filter-img"></div>
-                  <h2>{collection.Title}</h2>
-                </div>
+                <img
+                  src={
+                    imgMain && imgMain[collection.Id]
+                      ? imgMain[collection.Id]
+                      : ""
+                  }
+                  alt=""
+                  loading="lazy"
+                />
+                <div className="filter-img"></div>
+                <h2>{collection.Title}</h2>
               </Link>
-            ))}
-        </div>
+            </div>
+          ))}
+        </section>
       </main>
     </>
   );

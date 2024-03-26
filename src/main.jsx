@@ -15,6 +15,7 @@ import { CreateCollection } from './pages/CreateCollection';
 import { EditCollection } from './pages/EditCollection';
 import { Error404 } from "./pages/Error404";
 import { Layout } from "./componentes/Layout";
+import { LayoutHome } from "./componentes/LayoutHome"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
@@ -25,34 +26,40 @@ const root = createRoot(rootElement);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <LayoutHome />, // Usa el diseño alternativo aquí para la ruta /
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Home />, // Carga el componente Home dentro del diseño alternativo
       },
+    ],
+  },
+  {
+    path: "/", // Ruta principal que carga el Layout original para el resto de las páginas
+    element: <Layout />,
+    children: [
       {
-        path: "/collections",
+        path: "collections",
         element: <Collections />,
         errorElement: <Error404 />,
       },
       {
-        path: "/collections/:Id",
+        path: "collections/:Id",
         element: <Collection />,
         errorElement: <Error404 />,
       },
       {
-        path: "/services",
+        path: "services",
         element: <Services />,
         errorElement: <Error404 />,
       },
       {
-        path: "/about",
+        path: "about",
         element: <About />,
         errorElement: <Error404 />,
       },
       {
-        path: "/contact",
+        path: "contact",
         element: <Contact />,
         errorElement: <Error404 />,
       },
@@ -62,17 +69,17 @@ const router = createBrowserRouter([
         errorElement: <Error404 />,
       },*/
       {
-        path: "/admin-panel",
+        path: "admin-panel",
         element: <AdminPanel />,
         errorElement: <Error404 />,
       },
       {
-        path: "/admin-panel/create",
+        path: "admin-panel/create",
         element: <CreateCollection />,
         errorElement: <Error404 />,
       },
       {
-        path: "/admin-panel/edit/:Id",
+        path: "admin-panel/edit/:Id",
         element: <EditCollection />,
         errorElement: <Error404 />,
       },      

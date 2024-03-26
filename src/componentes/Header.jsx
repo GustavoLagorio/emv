@@ -8,9 +8,6 @@ import { Logo } from "./Logo";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
-  const location = useLocation();
-  const [isContactOrAbout, setIsContactOrAbout] = useState(false);
-  const [svgColor, setSvgColor] = useState(null)
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -41,33 +38,17 @@ function Header() {
     setIsOpen(false); // Cerrar el menú del sidebar al hacer clic en un enlace
   };
 
-  useEffect(() => {
-    setIsContactOrAbout(location.pathname === "/contact" || location.pathname === "/about");
-  }, [location.pathname]);
-
-  useEffect(() => {
-    
-    if(isContactOrAbout) {
-
-      setSvgColor('white');
-
-    } else {
-
-      setSvgColor('black');
-    }
-  }, [location.pathname, isContactOrAbout])
-
   return (
     <>
       <Navbar
         collapseOnSelect
         expand="false"
-        className="custom-navbar fixed-top"
+        className="custom-navbar"
       >
         <Container fluid>
           <Navbar.Brand>
             <Link to="/" reloadDocument>
-              <Logo color={svgColor}/>
+              <Logo color="black" />
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle
@@ -78,7 +59,7 @@ function Header() {
             {/* SVG para el menú cerrado */}
             {!isOpen && (
               <svg
-                className={isContactOrAbout ? "light" : ""}
+                className=""
                 xmlns="http://www.w3.org/2000/svg"
                 width="4rem"
                 height="4rem"
@@ -123,7 +104,7 @@ function Header() {
             {/* SVG para el menú abierto */}
             {isOpen && (
               <svg
-                className={isContactOrAbout ? "light" : ""}
+                className=""
                 xmlns="http://www.w3.org/2000/svg"
                 width="4rem"
                 height="4rem"
@@ -307,7 +288,7 @@ function Header() {
           </NavLink>
         </Nav>
         <div className="nav-menu-logo">
-        <Logo color="black" />
+          <Logo color="black" />
         </div>
       </div>
     </>

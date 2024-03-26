@@ -3,35 +3,63 @@
   background-color: $bg-frame;
 
   .contact-hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-
-    .contact-hero-title {
-      position: absolute;
-      top: 50%;
-      color: $white;
-      font-size: 6rem;
-      text-align: center;
-      z-index: +2;
-    }
+    height: 50vh;
+    position: relative;
+    width: 100%;
 
     img {
       width: 100%;
-      height: 100vh;
+      height: 100%;
       object-fit: cover;
-      font-size: 3rem;
-      color: white;
     }
 
     .filter-hero-contact {
-      position: absolute;
-        z-index: +1;
-        top: 0%;
-        left: 0%;
-        background-color: rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: +1;
+      top: -100%;
+      left: 0%;
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+
+      svg {
+        position: relative;
+        top: 50%;
+        width: 60%;
+        margin: 0 20%;
+        z-index: +2;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .contact {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+
+    .contact-hero {
+      height: 100%;
+      width: 50vw;
+
+      img {
         width: 100%;
-        height: 100vh;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .filter-hero-contact {
+        top: -100%;
+        width: 50vw;
+
+        svg {
+          width: 40%;
+          margin: 0 30%;
+        }
+      }      
     }
   }
 }

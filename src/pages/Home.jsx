@@ -6,7 +6,11 @@ import ReactPlayer from "react-player";
 import video from "../assets/video_home.mp4";
 import "animate.css/animate.min.css";
 
-const imgParallax1 = {
+import HomeCarrousel from "../componentes/HomeCarrousel";
+import { Logo } from "../componentes/Logo";
+import { SocialLinks } from "../componentes/SocialLinks";
+
+/*const imgParallax1 = {
   img: "https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/1963bea3-88de-4ea0-a810-b998162dc8e8/_DSC3461-Editar.jpg",
   hero: false,
   lsm: "50%",
@@ -117,22 +121,38 @@ const contentParallax3 = {
       <path d="M15 8l4 4" />
     </svg>
   ),
-};
+};*/
 
 export const Home = () => {
   return (
     <>
       <main className="home">
-        <div className="home-hero ">
-          <h1 className="home-hero-title animate__animated animate__fadeOut animate__slower">
-            Ezequiel Vieta
-          </h1>
-          <img
+        <section className="home-hero">
+          <HomeCarrousel />
+          {/*<img
             src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/d9546d0d-688f-41b0-a5bb-b8d6b00e9e41/222D03C7-E576-4F38-87D4-8B460157761B.jpg"
             alt=""
-          />
-        </div>
-        <ParallaxHome imagen={imgParallax1} contenido={contentParallax1} />
+          />*/}
+        </section>
+        <section className="home-main">
+            <div className="home-logo">
+              <Logo color="black" />
+            </div>
+            <div className="home-titles">
+              <h1 className="home-title">Texto Slogan</h1>
+              <h2 className="home-subtitle">Photographer & Videomaker</h2>
+              <Link
+                to="/collections"
+                reloadDocument
+                className="button btn-home"
+              >
+                See more
+              </Link>
+            </div>
+          <SocialLinks />
+        </section>
+
+        {/*<ParallaxHome imagen={imgParallax1} contenido={contentParallax1} />
         <ParallaxHome imagen={imgParallax2} contenido={contentParallax2} />
         <ParallaxHome imagen={imgParallax3} contenido={contentParallax3} />
         <div className="home-youtube">
@@ -172,7 +192,7 @@ export const Home = () => {
             </Link>
           </div>
         </div>
-        <ContactForm />
+  <ContactForm />*/}
       </main>
     </>
   );

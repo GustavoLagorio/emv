@@ -1,23 +1,15 @@
 .services {
   background-color: $bg-frame;
   width: 100vw;
-  padding-bottom: 3rem;
-
-  .services-hero {
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
   .service {
-    margin-bottom: 5rem;
+    padding-top: 4rem;
 
     h2 {
-      font-size: 4rem;
+      font-size: 3rem;
       text-align: center;
-      margin: 2rem 0;
       color: $gray;
+      margin-bottom: 2rem;
     }
 
     img {
@@ -35,12 +27,14 @@
     }
 
     p {
-      margin-top: 3rem;
-      font-size: 1.8rem;
-      padding: 3rem 1rem;
+      font-size: 1.6rem;
+      padding: 2rem 1rem 0 1rem;
       width: 100%;
       font-family: $text-font;
       text-align: center;
     }
+  }
+  .service:last-child {
+    padding-bottom: 4rem;
   }
 }

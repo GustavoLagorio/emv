@@ -9,8 +9,6 @@ export const About = () => {
             src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/88bc09b4-b9ea-4fb9-b237-8e6659c4834a/DSC09341.jpg?format=2500w"
             alt=""
           />
-          <h1>ABOUT</h1>
-          <div className="filter-hero-about"></div>
         </div>
         <article className="about-article">
           <p className="about-text">
