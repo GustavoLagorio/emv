@@ -47,7 +47,8 @@
     height: 50vh;
 
     .home-logo {
-      width: 50%;
+      width: 196px;
+      max-width: 70%;
       margin: 0 auto;
       padding-top: 5rem;
       svg {
@@ -118,7 +119,6 @@
       padding: 10rem 0;
 
       .home-logo {
-        width: 35%;
         padding-top: 5rem;
       }
       .home-titles {

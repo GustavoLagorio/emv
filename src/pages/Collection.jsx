@@ -65,9 +65,9 @@ export const Collection = () => {
           <div className="collection-hero">
             <div className="collection-hero-filter"></div>
             <img src={collection.Gallery[idCollection].Link} alt="" />
-            <h1>{collection.Title}</h1>
           </div>
           <article className="collection-description">
+            <h1>{collection.Title}</h1>
             <p>{collection.Description}</p>
           </article>
           <section className="collection-gallery">
@@ -77,7 +77,7 @@ export const Collection = () => {
               } else {
                 return (
                   <div key={item.Id} className="collection-gallery-img">
-                    <img src={item.Link} alt="" loading="lazy"/>
+                    <img src={item.Link} alt="" loading="lazy" />
                   </div>
                 );
               }

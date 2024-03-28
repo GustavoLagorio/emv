@@ -8,6 +8,20 @@ import { Logo } from "./Logo";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY;
+      setScrollPosition(position);
+    };
+
+    document.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -43,7 +57,8 @@ function Header() {
       <Navbar
         collapseOnSelect
         expand="false"
-        className="custom-navbar"
+        className={`custom-navbar ${scrollPosition === 0 ? 'opaque' : ''}`}
+        fixed="top"
       >
         <Container fluid>
           <Navbar.Brand>

@@ -1,5 +1,5 @@
 .navbar.custom-navbar {
-  background-color: $bg-frame;
+  //background-color: $bg-frame;
   height: 6vh;
   padding: 0;
 
@@ -139,4 +139,14 @@
 
 .sidebar.show {
   left: 0;
+}
+
+.custom-navbar.opaque {
+  background-color: $bg-frame; /* Opacidad completa */
+  transition: background-color 0.5s ease; /* Transición suave */
+}
+
+.custom-navbar {
+  background-color: rgba(54, 172, 58, 0); /* Opacidad inicial */
+  transition: background-color 0.5s ease; /* Transición suave */
 }

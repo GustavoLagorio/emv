@@ -139,8 +139,8 @@ export const Home = () => {
               <Logo color="black" />
             </div>
             <div className="home-titles">
-              <h1 className="home-title">Texto Slogan</h1>
-              <h2 className="home-subtitle">Photographer & Videomaker</h2>
+              <h1 className="home-title">Ezequiel Vieta</h1>
+              <h2 className="home-subtitle">Capturing Moments, Creating Stories</h2>
               <Link
                 to="/collections"
                 reloadDocument

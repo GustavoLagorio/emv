@@ -1,20 +1,16 @@
-import React from 'react';
-import { useGoogleLogin } from '@react-oauth/google';
+import React from "react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import LoginButton from "../componentes/LoginButton";
 
-const GoogleLoginButton = ({ onSuccess, onFailure }) => {
-  const { signIn, loaded } = useGoogleLogin({
-    clientId: '309513572301-370vm8smlo8a0fe6sar6u0jaej0od3qk.apps.googleusercontent.com',
-    onSuccess,
-    onFailure,
-  });
-
-  if (!loaded) {
-    return <div>Loading...</div>;
-  }
-
+export const Login = () => {
   return (
-    <button onClick={signIn}>Sign in with Google</button>
+    <>
+      <main className="login">
+        <h1>WELCOME TO EMV</h1>
+        <GoogleOAuthProvider clientId="309513572301-370vm8smlo8a0fe6sar6u0jaej0od3qk.apps.googleusercontent.com">
+          <LoginButton />
+        </GoogleOAuthProvider>
+      </main>
+    </>
   );
-}
-
-export default GoogleLoginButton;
+};

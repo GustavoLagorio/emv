@@ -57,39 +57,6 @@ export const Collections = () => {
     }
   }, [collections]);
 
-  const handleCollectionClick = (collectionId) => {
-    console.log(clickedCollection);
-    console.log(collectionId);
-    
-    if (selectedCollection === collectionId) {
-      window.location.href = `/collections/${collectionId}`;
-    return;
-    }
-
-    setClickedCollection(null);
-
-    setClickedCollection(collectionId);
-    setSelectedCollection(collectionId);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      // Verificar si el ancho de la pantalla es mayor o igual a 1200px
-      setIsWideScreen(window.innerWidth >= 1200);
-    };
-
-    // Agregar un event listener para el evento 'resize' que se activa cuando cambia el tamaño de la ventana
-    window.addEventListener("resize", handleResize);
-
-    // Llamar a handleResize una vez al inicio para inicializar el estado
-    handleResize();
-
-    // Remover el event listener al desmontar el componente para evitar memory leaks
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
       <main className="collections">
@@ -103,10 +70,8 @@ export const Collections = () => {
               onClick={() => handleCollectionClick(collection.Id)}
             >
               <Link
-                to={isWideScreen === true ? `/collections/${collection.Id}` : url}
-                className={`collection-link ${
-                  clickedCollection === collection.Id ? "active" : ""
-                }`}
+                to={`/collections/${collection.Id}`}
+                className="collection-link"
               >
                 <img
                   src={
