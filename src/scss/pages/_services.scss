@@ -1,6 +1,5 @@
 .services {
   background-color: $bg-frame;
-  width: 100vw;
 
   .service {
     padding-top: 4rem;
@@ -15,7 +14,7 @@
     img {
       min-height: 50vh;
       max-height: 80vh;
-      width: 100vw;
+      width: 100%;
       object-fit: cover;
     }
 
