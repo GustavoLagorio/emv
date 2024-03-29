@@ -9,6 +9,15 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [lock, setLock] = useState(false);
+
+  const toggleScrollLock = (lock) => {
+    document.body.classList.toggle("scroll-lock", lock);
+  };
+
+  useEffect(() => {
+    toggleScrollLock(lock);
+  }, [lock]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +39,7 @@ function Header() {
         !containerRef.current.contains(event.target)
       ) {
         setIsOpen(false);
+        setLock(false);
       }
     };
 
@@ -42,6 +52,11 @@ function Header() {
 
   const handleToggleClick = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
+    if (lock) {
+      setLock(false);
+    } else {
+      setLock(true);
+    }
   };
 
   const handleToggleMouseDown = (event) => {
@@ -49,7 +64,8 @@ function Header() {
   };
 
   const handleNavLinkClick = () => {
-    setIsOpen(false); // Cerrar el menú del sidebar al hacer clic en un enlace
+    setIsOpen(false);
+    setLock(false);
   };
 
   return (
@@ -57,7 +73,7 @@ function Header() {
       <Navbar
         collapseOnSelect
         expand="false"
-        className={`custom-navbar ${scrollPosition === 0 ? 'opaque' : ''}`}
+        className={`custom-navbar ${scrollPosition === 0 ? "opaque" : ""}`}
         fixed="top"
       >
         <Container fluid>

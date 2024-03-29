@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 export const Collections = () => {
   const [collections, setCollections] = useState(null);
   const [imgMain, setImgMain] = useState(null);
-  const [clickedCollection, setClickedCollection] = useState({});
-  const [isWideScreen, setIsWideScreen] = useState(false);
-  const [url, setUrl] = useState("");
-  const [selectedCollection, setSelectedCollection] = useState(null);
 
   useEffect(() => {
     const obtenerCollections = async () => {

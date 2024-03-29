@@ -46,7 +46,6 @@ export const Collection = () => {
         const selectedCollection = collections.find(
           (item) => item.Id === idCollection
         );
-        console.log(selectedCollection);
         if (selectedCollection) {
           setCollection(selectedCollection);
         }
@@ -58,7 +57,6 @@ export const Collection = () => {
 
   if (collection) {
     const collectionGallery = collection.Gallery;
-    console.log(collectionGallery);
     return (
       <>
         <main className="collection">
