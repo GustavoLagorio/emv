@@ -63,7 +63,6 @@ export const Collections = () => {
               key={collection.Id}
               id={`collection-${collection.Id}`}
               className="collection"
-              onClick={() => handleCollectionClick(collection.Id)}
             >
               <Link
                 to={`/collections/${collection.Id}`}
