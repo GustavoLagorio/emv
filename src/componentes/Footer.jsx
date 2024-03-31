@@ -10,9 +10,6 @@ export const Footer = () => {
   return (
     <>
       <footer>
-        <div className="footer-brand">
-          <Logo color="black" />
-        </div>
         <SocialLinks />         
         <ul className="terms">
           <li className="terms-item">

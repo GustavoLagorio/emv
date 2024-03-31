@@ -10,6 +10,7 @@ function Header() {
   const containerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [lock, setLock] = useState(false);
+  const [activeNavbar, setActiveNavar] = useState(false)
 
   const toggleScrollLock = (lock) => {
     document.body.classList.toggle("scroll-lock", lock);
@@ -59,6 +60,17 @@ function Header() {
     }
   };
 
+  useEffect(() => {
+    const navbarIsOpen = () => {
+
+      if(isOpen) {
+        setActiveNavar(true);
+      } else {
+        setActiveNavar(false);
+      }
+    }
+    navbarIsOpen();
+  }, [isOpen])
   const handleToggleMouseDown = (event) => {
     event.stopPropagation(); // Evitar que el evento llegue al contenedor exterior
   };
@@ -73,7 +85,7 @@ function Header() {
       <Navbar
         collapseOnSelect
         expand="false"
-        className={`custom-navbar ${scrollPosition === 0 ? "opaque" : ""}`}
+        className={`custom-navbar ${scrollPosition === 0 ? "opaque" : ""} ${activeNavbar === true ? "nav-activa" : ""}`}
         fixed="top"
       >
         <Container fluid>
@@ -100,7 +112,7 @@ function Header() {
                   fill="none"
                   stroke="currentColor"
                   strokeLinecap="round"
-                  strokeWidth="1"
+                  strokeWidth="1.5"
                 >
                   <path d="M5 5L19 19">
                     <animate
@@ -145,7 +157,7 @@ function Header() {
                   fill="none"
                   stroke="currentColor"
                   strokeLinecap="round"
-                  strokeWidth="1"
+                  strokeWidth="1.5"
                 >
                   <path d="M5 5L19 5">
                     <animate
@@ -318,9 +330,6 @@ function Header() {
             YOUTUBE
           </NavLink>
         </Nav>
-        <div className="nav-menu-logo">
-          <Logo color="black" />
-        </div>
       </div>
     </>
   );

@@ -11,12 +11,17 @@ h3 {
   letter-spacing: 0.4rem;
 }
 
+h3 {
+  font-size: 1.6rem;
+}
+
 p {
   font-family: $text-font;
 }
 
 a {
   text-decoration: none;
+  font-family: $text-font;
   color: $links;
   font-weight: $ligth;
 }

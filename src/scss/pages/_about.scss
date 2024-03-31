@@ -16,9 +16,9 @@
     padding-bottom: 2rem;
     .about-text {
       font-size: 1.8rem;
-      padding: 1rem 1rem;
+      padding: 1rem 3rem;
       width: 100%;
-      text-align: center;
+      text-align: justify;
       margin-top: 6rem;    
     }
   }  
@@ -44,11 +44,9 @@
       .about-text {
         font-size: 1.8rem;
         width: 100%;
-        text-align: center;
         margin: 0;
         padding: 0 10%
       }
     }  
   }
-
 }

@@ -60,8 +60,7 @@ export const Collection = () => {
     return (
       <>
         <main className="collection">
-          <div className="collection-hero">
-            <div className="collection-hero-filter"></div>
+          <div className="collection-hero">            
             <img src={collection.Gallery[idCollection].Link} alt="" />
           </div>
           <article className="collection-description">

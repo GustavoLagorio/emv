@@ -1,5 +1,6 @@
 .services {
   background-color: $bg-frame;
+  padding-top: 5vh;
 
   .service {
     padding-top: 4rem;
@@ -29,7 +30,6 @@
       font-size: 1.6rem;
       padding: 2rem 1rem 0 1rem;
       width: 100%;
-      font-family: $text-font;
       text-align: center;
     }
   }

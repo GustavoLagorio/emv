@@ -50,21 +50,26 @@
       width: 196px;
       max-width: 70%;
       margin: 0 auto;
-      padding-top: 5rem;
+      padding-top: 3rem;
       svg {
         width: 100%;
       }
     }
     .home-titles {
       text-align: center;
+      text-transform: uppercase;
+      margin-top: -1rem;
       .home-title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+        font-size: 2rem;
+        margin-bottom: 2rem;
       }
 
       .home-subtitle {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 0 0.5rem;
+        font-style: italic;
+        color: $gray;
       }
     }
   }
@@ -83,6 +88,7 @@
         width: auto;
         height: 3rem;
         margin: 0 auto;
+        transition: all 0.25s ease-in-out;
       }
     }
   }
@@ -147,6 +153,16 @@
 @media (min-width: 1200px) {
   .home {
     flex-flow: row nowrap;
+    .home-main {
+      .social-links {
+        .social-list {    
+          .social-item:hover {
+            transform: scale(1.2);
+            transition: all 0.25s ease-in-out;
+          }
+        }
+      }
+    }    
   }
 }
 
