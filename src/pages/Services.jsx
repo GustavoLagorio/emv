@@ -12,12 +12,6 @@ export const Services = () => {
             src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/6ba30d83-8f73-499b-abab-7d0f23d8d026/_DSC7010.jpg"
             alt="foto de servicios"
           />
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias
-            modi aperiam, expedita voluptates similique officiis sapiente
-            perferendis vero natus, cum veniam! Dignissimos praesentium
-            perspiciatis voluptas quasi quas est in nesciunt!
-          </p>
         </article>
         <article className="service">
           <h2>VIDEOGRAPHY</h2>
@@ -36,6 +30,24 @@ export const Services = () => {
             style, I seek to convey it through my camera."
           </p>
         </article>
+        <section className="services-list">
+          <h2>SERVICES</h2>
+          <ul>
+            <li className="services-item">Creative Direction</li>
+            <li className="services-item">Social Media Strategies</li>
+            <li className="services-item">Photography Production</li>
+            <li className="services-item">Video Production</li>
+            <li className="services-item">Social Media Management</li>
+            <li className="services-item">Podcast Production</li>
+            <li className="services-item">Content for Influencers</li>
+            <li className="services-item">3D Renders and Visualizations</li>
+            <li className="services-item">Aerial Photography and Video</li>
+            <li className="services-item">Professional Editing</li>
+            <li className="services-item">Visual Effects and Graphic Design</li>
+            <li className="services-item">Brand Activation and Creation</li>
+            <li className="services-item">Website Design</li>
+          </ul>
+        </section>
       </main>
     </>
   );

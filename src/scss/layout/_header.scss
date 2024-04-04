@@ -1,5 +1,4 @@
 .navbar.custom-navbar {
-  //background-color: $bg-frame;
   height: 6vh;
   padding: 0;
 
@@ -18,8 +17,18 @@
         
         svg {
           padding-left: 1rem;
-          width: 17rem;
-          //filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.507));
+          width: 12rem;
+        }
+      }
+    }
+
+    @media(min-width: 768px) {
+      .navbar-brand {  
+        a{          
+
+          svg {
+            width: 17rem;
+          }
         }
       }
     }
@@ -54,7 +63,7 @@
   position: fixed;
   top: 6vh;
   padding-top: 3rem;
-  left: -101vw; /* Oculta el menú inicialmente */
+  left: -101vw;
   width: 100vw;
   height: 100%;
   background-color: $bg-frame;
@@ -68,6 +77,7 @@
 
     a {
       font-size: 3rem;
+      font-family: $heading-font;
       letter-spacing: 0.5rem;
       color: $gray;
       margin: 0 0 2rem 2rem;

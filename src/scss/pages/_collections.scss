@@ -23,19 +23,25 @@
         }
 
         h2 {
-          position: relative;
-          top: 50%;
+          position: absolute;
+          top: 45%;
           color: $white;
           text-align: left;
           z-index: +2;
           margin: 0;
           padding: 0 2rem;
           text-align: center;
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: $regular;
           opacity: 1;
           transition: opacity 0.75s ease-in-out;
           text-transform: uppercase;
+        }
+
+        @media(min-width: 768px) {
+          h2 {
+            font-size: 2rem;
+          }
         }
 
         .filter-img {
