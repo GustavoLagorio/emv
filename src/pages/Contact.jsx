@@ -6,10 +6,6 @@ export const Contact = () => {
     <>
       <main className="contact">
         <div className="contact-hero">
-          <img
-            src="src\assets\contact.webp"
-            alt=""
-          />
         </div>
         <div className="form-section">
           <ContactForm />
