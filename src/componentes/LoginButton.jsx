@@ -14,7 +14,6 @@ const LoginButton = () => {
 
   return (
     <GoogleLogin
-      clientId="309513572301-370vm8smlo8a0fe6sar6u0jaej0od3qk.apps.googleusercontent.com"
       onSuccess={handleLogin}
       onFailure={handleLogin}
     />

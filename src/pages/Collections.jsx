@@ -36,7 +36,7 @@ export const Collections = () => {
     };
 
     obtenerCollections();
-  }, []); //Argumento vacio para que se ejecute una vez al ejecutar el componente
+  }, []);
 
   useEffect(() => {
     if (collections) {

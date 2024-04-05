@@ -1,5 +1,4 @@
 import React from "react";
-import { Logo } from "./Logo";
 import Autor from "../assets/autor_logo.jpeg"
 import { Link } from "react-router-dom";
 import { SocialLinks } from "./SocialLinks";
