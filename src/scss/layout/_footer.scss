@@ -1,6 +1,6 @@
 footer {
   width: 100%;
-  padding-top: 1rem;
+  padding-top: 6vh;
   background-color: $bg-frame;
 
   .social-links {
@@ -51,8 +51,9 @@ footer {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
-    padding: 0;
+    margin: 3rem auto 0 auto;
+    padding: 0 0 1rem 0;
+    margin-bottom: 0;
 
     .terms-item {
       width: 33%;
@@ -112,10 +113,16 @@ footer {
     }
   }
 
+  @media (min-width: 768px) {
+    .terms {
+      padding: 0 0 2rem 0;
+    }
+  }
+
   @media (min-width: 992px) {
     .terms {
       width: 50%;
-      margin: 0 25%;
+      margin: 2rem 25% 1rem 25%;
     }
   }
 }
