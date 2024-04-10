@@ -4,14 +4,13 @@ import { useParams } from "react-router-dom";
 export const Collection = () => {
   const { Id } = useParams();
   const idCollection = parseInt(Id);
-  const [collections, setCollections] = useState(null);
   const [collection, setCollection] = useState(null);
 
   useEffect(() => {
-    const obtenerCollections = async () => {
+    const obtenerCollection = async () => {
       try {
         const response = await fetch(
-          `https://pruebas-mvc.somee.com/api/collection`,
+          `https://pruebas-mvc.somee.com/api/collectionid?Id=${idCollection}`,
           {
             method: "GET",
             headers: {
@@ -24,7 +23,8 @@ export const Collection = () => {
           const contentType = response.headers.get("content-type");
           if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
-            setCollections(data);
+            setCollection(data);
+            console.log(data);
           } else {
             const textData = await response.text();
             console.log("Contenido de la respuesta:", textData);
@@ -37,31 +37,18 @@ export const Collection = () => {
       }
     };
 
-    obtenerCollections();
+    obtenerCollection();
   }, []);
 
-  useEffect(() => {
-    if (collections) {
-      const obtenerCollectionSelected = () => {
-        const selectedCollection = collections.find(
-          (item) => item.Id === idCollection
-        );
-        if (selectedCollection) {
-          setCollection(selectedCollection);
-        }
-      };
-
-      obtenerCollectionSelected();
-    }
-  }, [collections, idCollection]);
-
   if (collection) {
+    console.log(collection);
     const collectionGallery = collection.Gallery;
+    console.log(collectionGallery);
     return (
       <>
         <main className="collection">
           <div className="collection-hero">            
-            <img src={collection.Gallery[idCollection].Link} alt="" />
+            <img src={collectionGallery[0].Link} alt="" />
           </div>
           <article className="collection-description">
             <h1>{collection.Title}</h1>

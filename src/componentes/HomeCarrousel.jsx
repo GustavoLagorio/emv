@@ -1,40 +1,69 @@
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
 export default () => {
-  return (
-    <Swiper
-      modules={[EffectFade, Autoplay]}
-      effect="fade"
-      spaceBetween={0}
-      slidesPerView={1}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
-      loop={true}
-      speed={1500}
-      className="swiper-container"
-    >
-      <SwiperSlide>
-        <figure>
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/d9546d0d-688f-41b0-a5bb-b8d6b00e9e41/222D03C7-E576-4F38-87D4-8B460157761B.jpg"
-            alt=""
-          />
-        </figure>
-      </SwiperSlide>
-      <SwiperSlide>
-        <figure>
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/88bc09b4-b9ea-4fb9-b237-8e6659c4834a/DSC09341.jpg"
-            alt=""
-          />
-        </figure>
-      </SwiperSlide>{" "}
-      ...
-    </Swiper>
-  );
+  const [homeImg, setHomeImg] = useState([]);
+
+  useEffect(() => {
+    const obtenerFotosHome = async () => {
+      try {
+        const response = await fetch(
+          `https://pruebas-mvc.somee.com/api/home`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+            setHomeImg(data);
+          } else {
+            const textData = await response.text();
+            console.log("Contenido de la respuesta:", textData);
+          }
+        } else {
+          console.error("Error al obtener el token:", response.statusText);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    obtenerFotosHome();
+  }, []);
+  if(homeImg.length > 0) {
+    console.log(homeImg);
+    return (
+      <Swiper
+        modules={[EffectFade, Autoplay]}
+        effect="fade"
+        spaceBetween={0}
+        slidesPerView={1}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        speed={1500}
+        className="swiper-container"
+      >
+      {homeImg.map((img, index) => (
+          <SwiperSlide key={index}>
+            <figure>
+              <img src={img.Link} alt="" />
+            </figure>
+          </SwiperSlide>
+        ))}
+        ...
+      </Swiper>
+    );
+  }  
 };

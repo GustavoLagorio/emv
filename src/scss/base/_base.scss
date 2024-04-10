@@ -25,3 +25,7 @@ a {
   color: $links;
   font-weight: $ligth;
 }
+
+textarea::-webkit-resizer {
+  display: none;
+}
