@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const CreateCollection = () => {
   const [form, setForm] = useState({
@@ -14,6 +15,44 @@ export const CreateCollection = () => {
   const handleInputChange = (e) => {
     // Actualiza el estado del formulario cuando los campos de entrada cambian
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSuccess = () => {
+    Swal.fire({
+      title: "Colección creada",
+      text: "La colección se ha creado correctamente.",
+      confirmButtonText: "Ir al panel de administración",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/admin-panel";
+      }
+    });
+  };
+
+  const handleFail = () => {
+    Swal.fire({
+      title: "Solicitud fallida",
+      text: "La colección no pudo ser creada.",
+      confirmButtonText: "Ir al panel de administración",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/admin-panel";
+      }
+    });
   };
 
   //Ejecuta el envio del formulario al servidor
@@ -41,18 +80,19 @@ export const CreateCollection = () => {
 
       if (response.status === 200) {
         console.log(response);
-
-        //Si la respuesta es 200 navega hasta el menu de Bungalows para seguir trabajando
+        handleSuccess();
         return;
       } else {
         console.log(response);
+        handleFail();
 
         //Si falla por algun motivo navega al login para reloguear
-        console.error("Inicio de sesión fallido");
+        console.error("Fallo la creacion de la colección");
         return;
       }
     } catch (error) {
       console.error("Error al enviar los datos:", error);
+      handleFail();
     }
   };
   return (
@@ -118,7 +158,9 @@ export const CreateCollection = () => {
           <p>(Check if you want the collection to be active.)</p>
         </label>
         <br />
-        <button type="submit" className="button" resize="none">Submit</button>
+        <button type="submit" className="button" resize="none">
+          Submit
+        </button>
       </form>
     </main>
   );

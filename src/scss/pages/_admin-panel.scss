@@ -53,19 +53,11 @@
     
           .command-item {
             align-self: center;
-            width: 30%;
+            width: min-content;
     
-            .btn-command {
-              background-color: $button;
-              height: 5rem;
-              width: 100%;
+            .button, a.button {
               align-self: center;
-              padding: 1rem;
-              font-size: 2rem;
-              color: $white;
-              border-radius: 0.6rem;
               display: block;
-              text-align: center;
             }
           }
         }

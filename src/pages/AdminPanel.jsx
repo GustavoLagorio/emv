@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const AdminPanel = () => {
   const [collections, setCollections] = useState(null);
@@ -36,6 +37,78 @@ export const AdminPanel = () => {
     obtenerCollections();
   }, []);
 
+  const handleSuccess = () => {
+    Swal.fire({
+      title: "Colección eliminada",
+      text: "La colección se ha eliminado correctamente.",
+      confirmButtonText: "Ir al panel de administración",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/admin-panel";
+      }
+    });
+  };
+
+  const handleFail = () => {
+    Swal.fire({
+      title: "Solicitud fallida",
+      text: "La colección no pudo ser eliminada.",
+      confirmButtonText: "Ir al panel de administración",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/admin-panel";
+      }
+    });
+  };
+
+  const handleDelete = async (id) => {
+    const collectionDelete = {
+      Id: id
+    }
+    try {
+      const response = await fetch(
+        `https://pruebas-mvc.somee.com/Api/Collection`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(collectionDelete),
+        }
+      );
+
+      if (response.status === 200) {
+        console.log(response);
+        handleSuccess();
+        return;
+      } else {
+        console.log(response);
+        handleFail();
+
+        //Si falla por algun motivo navega al login para reloguear
+        console.error("Fallo la eliminacion de la colección");
+        return;
+      }
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+      handleFail();
+    }
+  };
+
   return (
     <>
       <main className="admin-panel">
@@ -62,7 +135,7 @@ export const AdminPanel = () => {
                 <ul className="command-list">
                   <li className="command-item">
                     <Link
-                      className="btn-command"
+                      className="button"
                       as={Link}
                       to={`/admin-panel/edit/${collection.Id}`}
                     >
@@ -70,7 +143,7 @@ export const AdminPanel = () => {
                     </Link>
                   </li>
                   <li className="command-item">
-                    <button className="btn-command">Delete</button>
+                    <button className="button" onClick={() => handleDelete(collection.Id)}>Delete</button>
                   </li>
                 </ul>
               </div>

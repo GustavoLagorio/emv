@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const EditCollection = () => {
   const { Id } = useParams();
@@ -13,7 +14,7 @@ export const EditCollection = () => {
     State: "",
   });
 
-  const { Title, Description, Order, Images_Quantity, State } = form;
+  const { Title, Order, Images_Quantity, State } = form;
 
   useEffect(() => {
     const obtenerCollection = async () => {
@@ -48,6 +49,44 @@ export const EditCollection = () => {
     obtenerCollection();
   }, []);
 
+  const handleSuccess = () => {
+    Swal.fire({
+      title: "Colección editada",
+      text: "La colección se ha actualizado correctamente.",
+      confirmButtonText: "Ir al panel de administración",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/admin-panel";
+      }
+    });
+  };
+
+  const handleFail = () => {
+    Swal.fire({
+      title: "Solicitud fallida",
+      text: "La colección no pudo ser actualizada.",
+      confirmButtonText: "Ir al panel de administración",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/admin-panel";
+      }
+    });
+  };
+
   const handleInputChange = (e) => {
     // Actualiza el estado del formulario cuando los campos de entrada cambian
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,11 +103,14 @@ export const EditCollection = () => {
     }
 
     const updatedForm = {
+      Id: collection.Id,
+      Dischard_Date: collection.Dischard_Date,
       Title: form.Title.trim() || collection.Title,
       Description: form.Description.trim() || collection.Description,
       Order: form.Order.trim() || collection.Order,
-      Images_Quantity: form.Images_Quantity.trim() || collection.Images_Quantity,
-      State: form.State
+      Images_Quantity:
+        form.Images_Quantity.trim() || collection.Images_Quantity,
+      State: form.State,
     };
     console.log(updatedForm);
 
@@ -86,10 +128,12 @@ export const EditCollection = () => {
 
       if (response.status === 200) {
         console.log(response);
+        handleSuccess();
 
         //Si la respuesta es 200 navega hasta el menu de Bungalows para seguir trabajando
         return;
       } else {
+        handleFail();
         console.log(response);
 
         //Si falla por algun motivo navega al login para reloguear
@@ -97,6 +141,7 @@ export const EditCollection = () => {
         return;
       }
     } catch (error) {
+      handleFail();
       console.error("Error al enviar los datos:", error);
     }
   };
@@ -127,38 +172,39 @@ export const EditCollection = () => {
             />
           </label>
           <br />
+          <div className="form-numbers">
+            <label>
+              Order:
+              <input
+                type="number"
+                value={Order}
+                placeholder={collection.Order}
+                name="Order"
+                onChange={handleInputChange}
+              />
+            </label>
+            <br />
+            <label className="img-quantity">
+              Images Quantity:
+              <input
+                type="number"
+                value={Images_Quantity}
+                placeholder={collection.Images_Quantity}
+                name="Images_Quantity"
+                onChange={handleInputChange}
+              />
+            </label>
+            <br />
           <label>
-            Number of Order:
-            <input
-              type="number"
-              value={Order}
-              placeholder={collection.Order}
-              name="Order"
-              onChange={handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            Number of Images Quantity:
-            <input
-              type="number"
-              value={Images_Quantity}
-              placeholder={collection.Images_Quantity}
-              name="Images_Quantity"
-              onChange={handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            State:
+            <span>State:</span>
             <input
               type="checkbox"
               checked={State}
               onChange={handleInputChange}
               name="State"
             />
-            <p>(Check if you want the collection to be active.)</p>
           </label>
+          </div>          
           <br />
           <button type="submit" className="button" resize="none">
             Submit

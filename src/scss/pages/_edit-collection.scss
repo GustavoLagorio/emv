@@ -41,6 +41,39 @@
           text-align: center;
         }
       }
+      .form-numbers {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+
+        label {
+          width: 40%;
+          margin: 0 5% 2rem 0;
+          input {
+            text-align: center;
+          }
+        }
+        .img-quantity {
+          margin: 0 0% 2rem 5%;
+        }
+        label:last-child {
+          justify-self: center;
+          width: 100%;
+          margin: 0;
+          display: flex;
+          flex-flow: row;
+          justify-content: center;
+          align-items: center;
+          span {
+            font-size: 1.6rem;
+            margin-right: 1rem;
+          }
+          input {
+            margin: 0;
+            height: 100%;
+          }
+        }
+      }
     }
   
     @media(min-width: 1200px) {
