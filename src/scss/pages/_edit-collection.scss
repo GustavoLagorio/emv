@@ -83,6 +83,24 @@
           label {
             font-size: 2rem;
           }
+
+          .form-numbers {
+    
+            label {
+              width: 30%;
+              input {
+                text-align: center;
+              }
+            }
+            label:last-child {
+              width: 30%;
+              flex-flow: column;
+              span {
+                font-size: 2rem;
+                margin-right: 0;
+              }
+            }
+          }
       }
     }
   }

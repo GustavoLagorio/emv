@@ -8,7 +8,7 @@ export const Collections = () => {
     const obtenerCollections = async () => {
       try {
         const response = await fetch(
-          `https://pruebas-mvc.somee.com/Api/Collection`,
+          `${import.meta.env.VITE_API_COLLECTION_DEV}`,
           {
             method: "GET",
             headers: {
@@ -22,13 +22,12 @@ export const Collections = () => {
           if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
             setCollections(data);
-            console.log(data);
           } else {
             const textData = await response.text();
             console.log("Contenido de la respuesta:", textData);
           }
         } else {
-          console.error("Error al obtener el token:", response.statusText);
+          console.error("Error al obtener la data:", response.statusText);
         }
       } catch (error) {
         console.log(error);
@@ -38,14 +37,16 @@ export const Collections = () => {
     obtenerCollections();
   }, []);
 
+
   if(collections) {
-    console.log(collections[0].Gallery[0].Link);
+
+    const filteredCollections = collections.filter((collection) => collection.State);
+
     return (
       <>
         <main className="collections">
           <section className="collections-list">
-          {collections &&
-            collections.map((collection) => (
+          {filteredCollections.map((collection) => (
               <div
                 key={collection.Id}
                 id={`collection-${collection.Id}`}

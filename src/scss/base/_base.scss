@@ -30,8 +30,8 @@ textarea::-webkit-resizer {
   display: none;
 }
 
-.my-swal-modal-container {
-  .swal2-popup.swal2-modal {
+.swal2-container.my-swal-modal-container {
+  .swal2-popup.swal2-modal.swal2-show {
     background-color: $bg-frame;
     .swal2-confirm.button {
       background-color: $button;
@@ -51,11 +51,49 @@ textarea::-webkit-resizer {
       background: none;
       color: black;
     }
-    h2 {
-      font-size: 2rem;
-    }
-    .swal2-html-container {
-      font-size: 1.6rem;
+    .swal2-actions {
+      .swal2-confirm.button.swal2-default-outline.swal2-styled {
+        background-color: $button;
+        height: auto;
+        width: auto;
+        padding: 0.7rem 1.4rem;
+        font-size: 1.5rem;
+        font-weight: $regular;
+        color: $white;
+        border-radius: 0.3rem;
+        border: 0;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+          border-color 0.3s ease-in-out;
+      }
+      .swal2-confirm.button.swal2-default-outline.swal2-styled:hover {
+        border: 1px solid $gray;
+        background: none;
+        color: black;
+      }
+      .swal2-cancel.button.swal2-styled.swal2-default-outline {
+        background-color: $button;
+        height: auto;
+        width: auto;
+        padding: 0.7rem 1.4rem;
+        font-size: 1.5rem;
+        font-weight: $regular;
+        color: $white;
+        border-radius: 0.3rem;
+        border: 0;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+          border-color 0.3s ease-in-out;
+      }
+      .swal2-cancel.button.swal2-styled.swal2-default-outline:hover {
+        border: 1px solid $gray;
+        background: none;
+        color: black;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .swal2-html-container {
+        font-size: 1.6rem;
+      }
     }
   }
 }

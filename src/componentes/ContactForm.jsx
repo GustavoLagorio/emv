@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +16,37 @@ export const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //Manejo del submit
-  const handleSubmit = (e) => {
+  const handleSuccess = () => {
+    Swal.fire({
+      title: "Mensaje enviado",
+      text: "Tu mensaje fue enviado con exito",
+      confirmButtonText: "Cerrar",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    });
+  };
+
+  const handleFail = () => {
+    Swal.fire({
+      title: "Algo salio mal",
+      text: "El mensaje no pudo ser enviado, intenta mas tarde.",
+      confirmButtonText: "Cerrar",
+      allowOutsideClick: false,
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        content: "my-swal-modal-content",
+        confirmButton: "button",
+      },
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validación de campos obligatorios
@@ -28,14 +58,11 @@ export const ContactForm = () => {
     // Sanitización de datos
     const sanitizedFormData = {
       ...formData,
-      name: formData.name.trim(),
-      lastName: formData.lastName.trim(),
-      email: formData.email.trim(),
-      message: formData.message.trim(),
+      Name: formData.name.trim(),
+      Last_Name: formData.lastName.trim(),
+      Email: formData.email.trim(),
+      Message: formData.message.trim(),
     };
-
-    // Aquí puedes enviar los datos al backend o hacer lo que necesites con ellos
-    console.log("Datos enviados:", sanitizedFormData);
 
     // Reiniciar el formulario y limpiar el error
     setFormData({
@@ -45,6 +72,35 @@ export const ContactForm = () => {
       message: "",
     });
     setError("");
+
+    try {
+      const response = await fetch(
+        `${importa.meta.env.VITE_API_CONTACT_DEV}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sanitizedFormData),
+        }
+      );
+
+      if (response.status === 200) {
+        console.log(response);
+        handleSuccess();
+        return;
+      } else {
+        console.log(response);
+        handleFail();
+
+        //Si falla por algun motivo navega al login para reloguear
+        console.error("Fallo del mensaje en el servidor");
+        return;
+      }
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+      handleFail();
+    }
   };
   return (
     <>

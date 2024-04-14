@@ -10,7 +10,7 @@ export const Collection = () => {
     const obtenerCollection = async () => {
       try {
         const response = await fetch(
-          `https://pruebas-mvc.somee.com/api/collectionid?Id=${idCollection}`,
+          `${import.meta.env.VITE_API_COLLECTION_ID_DEV}${idCollection}`,
           {
             method: "GET",
             headers: {
@@ -24,7 +24,6 @@ export const Collection = () => {
           if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
             setCollection(data);
-            console.log(data);
           } else {
             const textData = await response.text();
             console.log("Contenido de la respuesta:", textData);
@@ -41,9 +40,7 @@ export const Collection = () => {
   }, []);
 
   if (collection) {
-    console.log(collection);
     const collectionGallery = collection.Gallery;
-    console.log(collectionGallery);
     return (
       <>
         <main className="collection">

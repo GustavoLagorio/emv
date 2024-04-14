@@ -64,11 +64,10 @@ export const CreateCollection = () => {
     } else {
       form.State = false;
     }
-    console.log(form);
 
     try {
       const response = await fetch(
-        "https://pruebas-mvc.somee.com/Api/Collection",
+        `${import.meta.env.VITE_API_COLLECTION_DEV}`,
         {
           method: "POST",
           headers: {
@@ -123,40 +122,41 @@ export const CreateCollection = () => {
           />
         </label>
         <br />
-        <label>
-          Number of Order:
-          <input
-            type="number"
-            value={Order}
-            required={true}
-            placeholder="Orden de lista"
-            name="Order"
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Number of Images Quantity:
-          <input
-            type="number"
-            value={Images_Quantity}
-            required={true}
-            placeholder="Cantidad de imágenes"
-            name="Images_Quantity"
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          State:
-          <input
-            type="checkbox"
-            checked={State}
-            onChange={handleInputChange}
-            name="State"
-          />
-          <p>(Check if you want the collection to be active.)</p>
-        </label>
+        <div className="form-numbers">
+          <label>
+            Order:
+            <input
+              type="number"
+              value={Order}
+              required={true}
+              placeholder="Orden de lista"
+              name="Order"
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            Imgs Qty:
+            <input
+              type="number"
+              value={Images_Quantity}
+              required={true}
+              placeholder="N° de imágenes"
+              name="Images_Quantity"
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            <span>State:</span>
+            <input
+              type="checkbox"
+              checked={State}
+              onChange={handleInputChange}
+              name="State"
+            />
+          </label>
+        </div>
         <br />
         <button type="submit" className="button" resize="none">
           Submit

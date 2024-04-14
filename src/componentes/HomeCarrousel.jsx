@@ -11,7 +11,7 @@ export default () => {
     const obtenerFotosHome = async () => {
       try {
         const response = await fetch(
-          `https://pruebas-mvc.somee.com/api/home`,
+          `${import.meta.env.VITE_API_HOME_DEV}`,
           {
             method: "GET",
             headers: {
@@ -30,7 +30,7 @@ export default () => {
             console.log("Contenido de la respuesta:", textData);
           }
         } else {
-          console.error("Error al obtener el token:", response.statusText);
+          console.error("Error al obtener la data:", response.statusText);
         }
       } catch (error) {
         console.log(error);
@@ -40,7 +40,6 @@ export default () => {
     obtenerFotosHome();
   }, []);
   if(homeImg.length > 0) {
-    console.log(homeImg);
     return (
       <Swiper
         modules={[EffectFade, Autoplay]}

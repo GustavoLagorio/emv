@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const AdminPanel = () => {
@@ -9,7 +9,7 @@ export const AdminPanel = () => {
     const obtenerCollections = async () => {
       try {
         const response = await fetch(
-          `https://pruebas-mvc.somee.com/api/collection`,
+          `${import.meta.env.VITE_API_COLLECTION_DEV}`,
           {
             method: "GET",
             headers: {
@@ -36,6 +36,27 @@ export const AdminPanel = () => {
 
     obtenerCollections();
   }, []);
+
+  const confirmDelete = (id) => {
+    Swal.fire({
+      title: "¿Desea eliminar la colección de la base de datos?",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      customClass: {
+        container: "my-swal-modal-container",
+        title: "my-swal-modal-title",
+        confirmButton: "button",
+        cancelButton: "button"
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleDelete(id);
+      }
+    });
+  }
 
   const handleSuccess = () => {
     Swal.fire({
@@ -81,7 +102,7 @@ export const AdminPanel = () => {
     }
     try {
       const response = await fetch(
-        `https://pruebas-mvc.somee.com/Api/Collection`,
+        `${import.meta.env.VITE_API_COLLECTION_DEV}`,
         {
           method: "DELETE",
           headers: {
@@ -143,7 +164,7 @@ export const AdminPanel = () => {
                     </Link>
                   </li>
                   <li className="command-item">
-                    <button className="button" onClick={() => handleDelete(collection.Id)}>Delete</button>
+                    <button className="button" onClick={() => confirmDelete(collection.Id)}>Delete</button>
                   </li>
                 </ul>
               </div>

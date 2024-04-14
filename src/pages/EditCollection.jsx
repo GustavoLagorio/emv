@@ -13,14 +13,13 @@ export const EditCollection = () => {
     Images_Quantity: "",
     State: "",
   });
-
-  const { Title, Order, Images_Quantity, State } = form;
+  const [on, setOn] = useState("");
 
   useEffect(() => {
     const obtenerCollection = async () => {
       try {
         const response = await fetch(
-          `https://pruebas-mvc.somee.com/api/collectionid?Id=${idCollection}`,
+          `${import.meta.env.VITE_API_COLLECTION_ID_DEV}${idCollection}`,
           {
             method: "GET",
             headers: {
@@ -34,12 +33,25 @@ export const EditCollection = () => {
           if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
             setCollection(data);
+            if (data.State) {
+              setOn("on");
+            } else {
+            }
+            setForm({
+              Title: data.Title || "",
+              Description: data.Description || "",
+              Order: data.Order || "",
+              Images_Quantity: data.Images_Quantity || "",
+            });
+            if (data.State) {
+              setOn("on");
+            }
           } else {
             const textData = await response.text();
             console.log("Contenido de la respuesta:", textData);
           }
         } else {
-          console.error("Error al obtener el token:", response.statusText);
+          console.error("Error al obtener la data:", response.statusText);
         }
       } catch (error) {
         console.log(error);
@@ -48,6 +60,14 @@ export const EditCollection = () => {
 
     obtenerCollection();
   }, []);
+
+  const changeOn = () => {
+    setOn((prevState) => (prevState === "on" ? "" : "on"));
+    setForm((prevForm, prevState) => ({
+      ...prevForm,
+      State: prevState === true ? false : true,
+    }));
+  };
 
   const handleSuccess = () => {
     Swal.fire({
@@ -88,35 +108,30 @@ export const EditCollection = () => {
   };
 
   const handleInputChange = (e) => {
-    // Actualiza el estado del formulario cuando los campos de entrada cambian
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    setForm({ ...form, [name]: newValue });
   };
 
   //Ejecuta el envio del formulario al servidor
   const collectionSubmit = async (e) => {
     e.preventDefault();
 
-    if (form.State === "on") {
-      form.State = true;
-    } else {
-      form.State = false;
-    }
-
     const updatedForm = {
       Id: collection.Id,
       Dischard_Date: collection.Dischard_Date,
-      Title: form.Title.trim() || collection.Title,
-      Description: form.Description.trim() || collection.Description,
-      Order: form.Order.trim() || collection.Order,
+      Title: (form.Title ?? "").trim() || collection.Title,
+      Description: (form.Description ?? "").trim() || collection.Description,
+      Order: (form.Order ?? "").toString().trim() || collection.Order,
       Images_Quantity:
-        form.Images_Quantity.trim() || collection.Images_Quantity,
+        (form.Images_Quantity ?? "").toString().trim() ||
+        collection.Images_Quantity,
       State: form.State,
     };
-    console.log(updatedForm);
 
     try {
       const response = await fetch(
-        "https://pruebas-mvc.somee.com/Api/Collection",
+        `${import.meta.env.VITE_API_COLLECTION_DEV}`,
         {
           method: "PUT",
           headers: {
@@ -154,7 +169,7 @@ export const EditCollection = () => {
             Title:
             <input
               type="text"
-              value={Title}
+              value={form.Title}
               placeholder={collection.Title}
               name="Title"
               onChange={handleInputChange}
@@ -165,6 +180,7 @@ export const EditCollection = () => {
             Description:
             <textarea
               rows={4}
+              value={form.Description}
               placeholder={collection.Description}
               name="Description"
               resize="none"
@@ -177,7 +193,7 @@ export const EditCollection = () => {
               Order:
               <input
                 type="number"
-                value={Order}
+                value={form.Order}
                 placeholder={collection.Order}
                 name="Order"
                 onChange={handleInputChange}
@@ -185,26 +201,27 @@ export const EditCollection = () => {
             </label>
             <br />
             <label className="img-quantity">
-              Images Quantity:
+              Imgs Qty:
               <input
                 type="number"
-                value={Images_Quantity}
+                value={form.Images_Quantity}
                 placeholder={collection.Images_Quantity}
                 name="Images_Quantity"
                 onChange={handleInputChange}
               />
             </label>
             <br />
-          <label>
-            <span>State:</span>
-            <input
-              type="checkbox"
-              checked={State}
-              onChange={handleInputChange}
-              name="State"
-            />
-          </label>
-          </div>          
+            <label>
+              <span>State:</span>
+              <input
+                onClick={changeOn}
+                type="checkbox"
+                checked={on}
+                onChange={handleInputChange}
+                name="State"
+              />
+            </label>
+          </div>
           <br />
           <button type="submit" className="button" resize="none">
             Submit

@@ -1,7 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import { ScrollTop } from "./componentes/ScrollTop";
+import { AuthProvider } from "./context/authProvider";
 
 import { Home } from "./pages/Home";
 import { Collections } from "./pages/Collections";
@@ -10,12 +14,12 @@ import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
-import { AdminPanel } from "./pages/AdminPanel";
-import { CreateCollection } from './pages/CreateCollection';
-import { EditCollection } from './pages/EditCollection';
+import { AuthAdminPanel } from "./authRoutes/AuthAdminPanel";
+import { AuthCreateCollection } from "./authRoutes/AuthCreateCollection";
+import { AuthEditCollection } from "./authRoutes/AuthEditCollection";
 import { Error404 } from "./pages/Error404";
 import { Layout } from "./componentes/Layout";
-import { LayoutHome } from "./componentes/LayoutHome"
+import { LayoutHome } from "./componentes/LayoutHome";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
@@ -26,16 +30,16 @@ const root = createRoot(rootElement);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LayoutHome />, // Usa el diseño alternativo aquí para la ruta /
+    element: <LayoutHome />,
     children: [
       {
         index: true,
-        element: <Home />, // Carga el componente Home dentro del diseño alternativo
+        element: <Home />,
       },
     ],
   },
   {
-    path: "/", // Ruta principal que carga el Layout original para el resto de las páginas
+    path: "/",
     element: <Layout />,
     children: [
       {
@@ -70,27 +74,29 @@ const router = createBrowserRouter([
       },
       {
         path: "admin-panel",
-        element: <AdminPanel />,
+        element: <AuthAdminPanel/>,
         errorElement: <Error404 />,
       },
       {
         path: "admin-panel/create",
-        element: <CreateCollection />,
+        element: <AuthCreateCollection />,
         errorElement: <Error404 />,
       },
       {
         path: "admin-panel/edit/:Id",
-        element: <EditCollection />,
+        element: <AuthEditCollection />,
         errorElement: <Error404 />,
-      },      
+      },
     ],
   },
 ]);
 
 root.render(
   <StrictMode>
-    <RouterProvider router={router}>
-      <ScrollTop />
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router} fallbackElement="Cargando...">
+        <ScrollTop />
+      </RouterProvider>
+    </AuthProvider>
   </StrictMode>
 );
