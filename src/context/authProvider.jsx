@@ -26,6 +26,7 @@ export { AuthProvider };
 
 export default AuthContext;
 
+//* almacena y modifica el valor de isLoggedin segun el caso
 //* recomendado : crear el archivo en authProvider.jsx en la carpeta context
 //* modo de uso : <authProvider>
 //*             :    <App/> o un Componente de Alto Orden (HOC)
