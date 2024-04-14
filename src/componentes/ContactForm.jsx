@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import Swal from "sweetalert2";
 
 export const ContactForm = () => {
@@ -8,8 +9,13 @@ export const ContactForm = () => {
     email: "",
     message: "",
   });
-
   const [error, setError] = useState("");
+  const [capcha, setCapcha] = useState(null);
+
+  function onChange(value) {
+    console.log(value);
+    setCapcha(value);
+  }
 
   //Detectamos cambios en los campos
   const handleChange = (e) => {
@@ -50,19 +56,21 @@ export const ContactForm = () => {
     e.preventDefault();
 
     // Validación de campos obligatorios
-    if (!formData.email || !formData.message) {
-      setError("Email y message son campos obligatorios.");
+    if (!formData.email || !formData.message ) {
+      setError("Email, Capcha and message they are required fields.");
+      console.log(error);
       return;
     }
 
     // Sanitización de datos
     const sanitizedFormData = {
-      ...formData,
-      Name: formData.name.trim(),
-      Last_Name: formData.lastName.trim(),
-      Email: formData.email.trim(),
-      Message: formData.message.trim(),
+      Name: formData.name,
+      LastName: formData.lastName,
+      Email: formData.email,
+      Message: formData.message
     };
+
+    console.log(sanitizedFormData);
 
     // Reiniciar el formulario y limpiar el error
     setFormData({
@@ -74,16 +82,13 @@ export const ContactForm = () => {
     setError("");
 
     try {
-      const response = await fetch(
-        `${importa.meta.env.VITE_API_CONTACT_DEV}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(sanitizedFormData),
-        }
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_CONTACT_DEV}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sanitizedFormData),
+      });
 
       if (response.status === 200) {
         console.log(response);
@@ -150,7 +155,12 @@ export const ContactForm = () => {
               required
             />
           </div>
-          <button className="button" type="submit">Submit</button>
+          <div className="capcha-container">
+            <ReCAPTCHA sitekey={import.meta.env.VITE_GOOGLE_KEY} onChange={onChange} />,
+          </div>
+          <button className="button" type="submit">
+            Submit
+          </button>
         </form>
       </section>
     </>
