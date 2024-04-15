@@ -1,4 +1,5 @@
 import React from "react";
+import imgAbout from "../assets/img-about.jpg"
 
 export const About = () => {
   return (
@@ -6,7 +7,7 @@ export const About = () => {
       <main className="about">
         <div className="about-hero">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/88bc09b4-b9ea-4fb9-b237-8e6659c4834a/DSC09341.jpg?format=2500w"
+            src={imgAbout}
             alt=""
           />
         </div>

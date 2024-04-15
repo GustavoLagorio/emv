@@ -84,9 +84,10 @@ textarea::-webkit-resizer {
           border-color 0.3s ease-in-out;
       }
       .swal2-cancel.button.swal2-styled.swal2-default-outline:hover {
-        border: 1px solid $gray;
-        background: none;
-        color: black;
+        filter: invert(100%);
+        border: 1px solid white;
+        /*background: none !important;
+        color: black;*/
       }
       h2 {
         font-size: 2rem;

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import video from "../assets/video_home.mp4";
+import imgServices from "../assets/img-services.jpg";
 
 export const Services = () => {
   return (
@@ -9,7 +10,7 @@ export const Services = () => {
         <article className="service">
           <h2>PHOTOGRAPHY</h2>
           <img
-            src="https://images.squarespace-cdn.com/content/v1/64f5a946a689204be6eaaf3f/6ba30d83-8f73-499b-abab-7d0f23d8d026/_DSC7010.jpg"
+            src={imgServices}
             alt="foto de servicios"
           />
         </article>
@@ -17,6 +18,7 @@ export const Services = () => {
           <h2>VIDEOGRAPHY</h2>
           <ReactPlayer
             url={video}
+            controls={true}
             playing
             loop
             muted

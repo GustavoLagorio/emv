@@ -39,10 +39,11 @@ export const AdminPanel = () => {
 
   const confirmDelete = (id) => {
     Swal.fire({
-      title: "¿Desea eliminar la colección de la base de datos?",
+      title: "¿Desea eliminar la colección de la lista?",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      allowEnterKey: false,
+      confirmButtonColor: "#ed3b3b",
+      cancelButtonColor: "#212121",
       confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
       customClass: {

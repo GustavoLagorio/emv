@@ -156,7 +156,7 @@ export const ContactForm = () => {
             />
           </div>
           <div className="capcha-container">
-            <ReCAPTCHA sitekey={import.meta.env.VITE_GOOGLE_KEY} onChange={onChange} />,
+            <ReCAPTCHA sitekey={import.meta.env.VITE_CAPCHA} onChange={onChange} />,
           </div>
           <button className="button" type="submit">
             Submit

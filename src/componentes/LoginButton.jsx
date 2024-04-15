@@ -1,15 +1,24 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { jwtDecode } from "jwt-decode";
 
 const LoginButton = () => {
   const navigate = useNavigate();
-
   const { auth } = useAuth();
 
-  const handleSuccess = () => {
-    auth();
-    navigate("/admin-panel");
+  const handleSuccess = (response) => {
+    console.log(response);
+    const decodedToken = jwtDecode(response.credential);
+    console.log(decodedToken);
+
+    if (decodedToken.email == import.meta.env.VITE_MAIL_CLIENT 
+      || decodedToken.email == import.meta.env.VITE_MAIL_FRONT
+      || decodedToken.email == import.meta.env.VITE_MAIL_BACK
+      || decodedToken.email == import.meta.env.VITE_MAIL_DESIGN) {
+      auth();
+      navigate("/admin-panel");
+    }
   };
 
   return (
