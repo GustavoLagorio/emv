@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { User } from "../componentes/User";
 
 export const CreateCollection = () => {
   const [form, setForm] = useState({
@@ -9,8 +10,17 @@ export const CreateCollection = () => {
     Images_Quantity: "",
     State: "",
   });
+  const [on, setOn] = useState("");
 
   const { Title, Description, Order, Images_Quantity, State } = form;
+
+  const changeOn = () => {
+    setOn((prevState) => (prevState === "on" ? "" : "on"));
+    setForm((prevForm, prevState) => ({
+      ...prevForm,
+      State: prevState === true ? false : true,
+    }));
+  };
 
   const handleInputChange = (e) => {
     // Actualiza el estado del formulario cuando los campos de entrada cambian
@@ -96,6 +106,7 @@ export const CreateCollection = () => {
   };
   return (
     <main className="create-collection">
+      <User />
       <h1>Collection Creation</h1>
       <form onSubmit={collectionSubmit} className="create-form">
         <label>
@@ -150,8 +161,9 @@ export const CreateCollection = () => {
           <label>
             <span>State:</span>
             <input
+              onClick={changeOn}
               type="checkbox"
-              checked={State}
+              checked={on}
               onChange={handleInputChange}
               name="State"
             />

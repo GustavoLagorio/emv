@@ -2,6 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { jwtDecode } from "jwt-decode";
+import Swal from "sweetalert2";
 
 const LoginButton = () => {
   const navigate = useNavigate();
@@ -12,12 +13,33 @@ const LoginButton = () => {
     const decodedToken = jwtDecode(response.credential);
     console.log(decodedToken);
 
-    if (decodedToken.email == import.meta.env.VITE_MAIL_CLIENT 
-      || decodedToken.email == import.meta.env.VITE_MAIL_FRONT
-      || decodedToken.email == import.meta.env.VITE_MAIL_BACK
-      || decodedToken.email == import.meta.env.VITE_MAIL_DESIGN) {
+    if (
+      decodedToken.email == import.meta.env.VITE_MAIL_CLIENT ||
+      decodedToken.email == import.meta.env.VITE_MAIL_FRONT ||
+      decodedToken.email == import.meta.env.VITE_MAIL_BACK ||
+      decodedToken.email == import.meta.env.VITE_MAIL_DESIGN
+    ) {
+      const userMeta = decodedToken.email;
+      localStorage.setItem("userMeta", userMeta);
       auth();
       navigate("/admin-panel");
+    } else {
+      Swal.fire({
+        title: "Usuario no valido",
+        text: "La cuenta de acceso no es valida",
+        confirmButtonText: "Cerrar",
+        allowOutsideClick: false,
+        customClass: {
+          container: "my-swal-modal-container",
+          title: "my-swal-modal-title",
+          content: "my-swal-modal-content",
+          confirmButton: "button",
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "/login";
+        }
+      });
     }
   };
 
@@ -30,8 +52,8 @@ const LoginButton = () => {
         logo_alignment="center"
         width={300}
         onSuccess={handleSuccess}
-        onFailure={() => {
-          console.log("Login Fail");
+        onError={() => {
+          console.log("Error de login");
         }}
       />
     </>

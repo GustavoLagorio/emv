@@ -1,20 +1,30 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const initialLoggedInState = localStorage.getItem("isLoggedIn") === "true";
+  const [isLoggedIn, setIsLoggedIn] = useState(initialLoggedInState);
   //* Aca irian las funciones , datos ,que queremos compartir entre componentes
+
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", isLoggedIn);
+  }, [isLoggedIn]);
 
   const auth = () => {
     setIsLoggedIn(true);
   };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+  }
 
   return (
     <AuthContext.Provider
       value={{
         isLoggedIn,
         auth,
+        logout
       }}
     >
       {children}

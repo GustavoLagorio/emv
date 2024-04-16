@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { User } from "../componentes/User";
 
 export const EditCollection = () => {
   const { Id } = useParams();
@@ -163,6 +164,7 @@ export const EditCollection = () => {
   if (collection) {
     return (
       <main className="edit-collection">
+        <User/>
         <h1>Collection Edit</h1>
         <form onSubmit={collectionSubmit} className="edit-form">
           <label>

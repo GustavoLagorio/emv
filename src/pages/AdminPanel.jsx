@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { User } from "../componentes/User";
 
 export const AdminPanel = () => {
-  const [collections, setCollections] = useState(null);
+  const [collections, setCollections] = useState(null);  
 
   useEffect(() => {
     const obtenerCollections = async () => {
@@ -50,14 +51,14 @@ export const AdminPanel = () => {
         container: "my-swal-modal-container",
         title: "my-swal-modal-title",
         confirmButton: "button",
-        cancelButton: "button"
+        cancelButton: "button",
       },
     }).then((result) => {
       if (result.isConfirmed) {
         handleDelete(id);
       }
     });
-  }
+  };
 
   const handleSuccess = () => {
     Swal.fire({
@@ -99,8 +100,8 @@ export const AdminPanel = () => {
 
   const handleDelete = async (id) => {
     const collectionDelete = {
-      Id: id
-    }
+      Id: id,
+    };
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_COLLECTION_DEV}`,
@@ -129,11 +130,12 @@ export const AdminPanel = () => {
       console.error("Error al enviar los datos:", error);
       handleFail();
     }
-  };
+  }; 
 
   return (
     <>
       <main className="admin-panel">
+        <User/>        
         <div className="admin-title">
           <h1>DASHBOARD</h1>
         </div>
@@ -165,7 +167,12 @@ export const AdminPanel = () => {
                     </Link>
                   </li>
                   <li className="command-item">
-                    <button className="button" onClick={() => confirmDelete(collection.Id)}>Delete</button>
+                    <button
+                      className="button"
+                      onClick={() => confirmDelete(collection.Id)}
+                    >
+                      Delete
+                    </button>
                   </li>
                 </ul>
               </div>
