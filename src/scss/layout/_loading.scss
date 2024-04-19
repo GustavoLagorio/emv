@@ -1,0 +1,36 @@
+.loading {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+
+  svg {
+    width: 10rem;
+    animation: 1.5s spin ease infinite;
+  }
+
+  .ring {
+    fill: none;
+    stroke: $gray;
+    stroke-width: 1;
+  }
+
+  .ball {
+    fill: $button;
+    stroke: none;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

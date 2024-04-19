@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Loading } from "../componentes/Loading";
 
 export const Collections = () => {
   const [collections, setCollections] = useState(null);
@@ -37,16 +38,16 @@ export const Collections = () => {
     obtenerCollections();
   }, []);
 
-
-  if(collections) {
-
-    const filteredCollections = collections.filter((collection) => collection.State);
+  if (collections) {
+    const filteredCollections = collections.filter(
+      (collection) => collection.State
+    );
 
     return (
       <>
         <main className="collections">
           <section className="collections-list">
-          {filteredCollections.map((collection) => (
+            {filteredCollections.map((collection) => (
               <div
                 key={collection.Id}
                 id={`collection-${collection.Id}`}
@@ -56,11 +57,7 @@ export const Collections = () => {
                   to={`/collections/${collection.Id}`}
                   className="collection-link"
                 >
-                  <img
-                    src={collection.Gallery[0].Link}
-                    alt=""
-                    loading="lazy"
-                  />
+                  <img src={collection.Gallery[0].Link} alt="" loading="lazy" />
                   <div className="filter-img"></div>
                   <h2>{collection.Title}</h2>
                 </Link>
@@ -71,6 +68,8 @@ export const Collections = () => {
       </>
     );
   } else {
-    console.log('hola');
-  }  
+    return (
+      <Loading/>
+    );
+  }
 };

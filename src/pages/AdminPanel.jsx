@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { User } from "../componentes/User";
+import { Loading } from "../componentes/Loading";
 
 export const AdminPanel = () => {
-  const [collections, setCollections] = useState(null);  
+  const [collections, setCollections] = useState(null);
 
   useEffect(() => {
     const obtenerCollections = async () => {
@@ -130,55 +131,61 @@ export const AdminPanel = () => {
       console.error("Error al enviar los datos:", error);
       handleFail();
     }
-  }; 
+  };
 
-  return (
-    <>
-      <main className="admin-panel">
-        <User/>        
-        <div className="admin-title">
-          <h1>DASHBOARD</h1>
-        </div>
+  if (collections) {
+    return (
+      <>
+        <main className="admin-panel">
+          <User />
+          <div className="admin-title">
+            <h1>DASHBOARD</h1>
+          </div>
 
-        <section className="command-create">
-          <Link className="btn-command" as={Link} to={`/admin-panel/create`}>
-            Create new Collection
-          </Link>
-        </section>
+          <section className="command-create">
+            <Link className="btn-command" as={Link} to={`/admin-panel/create`}>
+              Create new Collection
+            </Link>
+          </section>
 
-        <div className="collections-list">
-          <h2>Modify or delete collections</h2>
-          {collections &&
-            collections.map((collection) => (
-              <div
-                key={collection.Id}
-                id={`collection-${collection.Id}`}
-                className="collection"
-              >
-                <h3>{collection.Title}</h3>
-                <ul className="command-list">
-                  <li className="command-item">
-                    <Link
-                      className="button"
-                      as={Link}
-                      to={`/admin-panel/edit/${collection.Id}`}
-                    >
-                      Edit
-                    </Link>
-                  </li>
-                  <li className="command-item">
-                    <button
-                      className="button"
-                      onClick={() => confirmDelete(collection.Id)}
-                    >
-                      Delete
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            ))}
-        </div>
-      </main>
-    </>
-  );
+          <div className="collections-list">
+            <h2>Modify or delete collections</h2>
+            {collections &&
+              collections.map((collection) => (
+                <div
+                  key={collection.Id}
+                  id={`collection-${collection.Id}`}
+                  className="collection"
+                >
+                  <h3>{collection.Title}</h3>
+                  <ul className="command-list">
+                    <li className="command-item">
+                      <Link
+                        className="button"
+                        as={Link}
+                        to={`/admin-panel/edit/${collection.Id}`}
+                      >
+                        Edit
+                      </Link>
+                    </li>
+                    <li className="command-item">
+                      <button
+                        className="button"
+                        onClick={() => confirmDelete(collection.Id)}
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+          </div>
+        </main>
+      </>
+    );
+  } else {
+    return (
+      <Loading />
+    )
+  }
 };

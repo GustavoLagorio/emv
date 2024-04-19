@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { User } from "../componentes/User";
+import { Loading } from "../componentes/Loading";
 
 export const EditCollection = () => {
   const { Id } = useParams();
@@ -15,6 +16,7 @@ export const EditCollection = () => {
     State: "",
   });
   const [on, setOn] = useState("");
+  const [checkValue, setCheckValue] = useState("");
 
   useEffect(() => {
     const obtenerCollection = async () => {
@@ -35,8 +37,12 @@ export const EditCollection = () => {
             const data = await response.json();
             setCollection(data);
             if (data.State) {
+              console.log(data.State);
               setOn("on");
+              setCheckValue("1")
             } else {
+              console.log(data.State);
+              setCheckValue("0")
             }
             setForm({
               Title: data.Title || "",
@@ -64,6 +70,7 @@ export const EditCollection = () => {
 
   const changeOn = () => {
     setOn((prevState) => (prevState === "on" ? "" : "on"));
+    setCheckValue((prevState) => (prevState === "1" ? "0" : "1"));
     setForm((prevForm, prevState) => ({
       ...prevForm,
       State: prevState === true ? false : true,
@@ -121,14 +128,16 @@ export const EditCollection = () => {
     const updatedForm = {
       Id: collection.Id,
       Dischard_Date: collection.Dischard_Date,
-      Title: (form.Title ?? "").trim() || collection.Title,
-      Description: (form.Description ?? "").trim() || collection.Description,
-      Order: (form.Order ?? "").toString().trim() || collection.Order,
+      Title: (form.Title ?? "") || collection.Title,
+      Description: (form.Description ?? ""),
+      Order: (form.Order ?? "").toString() || collection.Order,
       Images_Quantity:
-        (form.Images_Quantity ?? "").toString().trim() ||
+        (form.Images_Quantity ?? "").toString() ||
         collection.Images_Quantity,
-      State: form.State,
+      State: (form.State === undefined ? collection.State : form.State),
     };
+
+    console.log(updatedForm);
 
     try {
       const response = await fetch(
@@ -172,7 +181,6 @@ export const EditCollection = () => {
             <input
               type="text"
               value={form.Title}
-              placeholder={collection.Title}
               name="Title"
               onChange={handleInputChange}
             />
@@ -183,7 +191,6 @@ export const EditCollection = () => {
             <textarea
               rows={4}
               value={form.Description}
-              placeholder={collection.Description}
               name="Description"
               resize="none"
               onChange={handleInputChange}
@@ -196,7 +203,6 @@ export const EditCollection = () => {
               <input
                 type="number"
                 value={form.Order}
-                placeholder={collection.Order}
                 name="Order"
                 onChange={handleInputChange}
               />
@@ -218,6 +224,7 @@ export const EditCollection = () => {
               <input
                 onClick={changeOn}
                 type="checkbox"
+                value={checkValue}
                 checked={on}
                 onChange={handleInputChange}
                 name="State"
@@ -231,5 +238,7 @@ export const EditCollection = () => {
         </form>
       </main>
     );
+  } else {
+    <Loading />
   }
 };

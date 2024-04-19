@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Loading } from "../componentes/Loading";
 
 export const Collection = () => {
   const { Id } = useParams();
@@ -57,7 +58,7 @@ export const Collection = () => {
                 return null;
               } else {
                 return (
-                  <div key={item.Id} className="collection-gallery-img">
+                  <div key={index} className="collection-gallery-img">
                     <img src={item.Link} alt="" loading="lazy" />
                   </div>
                 );
@@ -67,5 +68,9 @@ export const Collection = () => {
         </main>
       </>
     );
+  } else {
+    return (
+      <Loading />
+    )
   }
 };

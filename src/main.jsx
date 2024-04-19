@@ -87,6 +87,10 @@ const router = createBrowserRouter([
         element: <AuthEditCollection />,
         errorElement: <Error404 />,
       },
+      {
+        path: "*",
+        element: <Error404 />,
+      },
     ],
   },
 ]);

@@ -20,6 +20,7 @@
 @import './scss/layout/footer';
 @import './scss/layout/contact-form';
 @import './scss//layout/user';
+@import './scss/layout/loading';
 
 /** PAGES **/
 
@@ -32,4 +33,5 @@
 @import './scss/pages/admin-panel';
 @import './scss/pages/contact';
 @import './scss/pages/create-collection';
-@import './scss/pages/edit-collection'
+@import './scss/pages/edit-collection';
+@import './scss/pages/error';

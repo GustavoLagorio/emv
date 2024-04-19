@@ -25,8 +25,8 @@ const LoginButton = () => {
       navigate("/admin-panel");
     } else {
       Swal.fire({
-        title: "Usuario no valido",
-        text: "La cuenta de acceso no es valida",
+        title: "Acceso denegado.",
+        text: "El usuario no tiene permitido acceder al sistema.",
         confirmButtonText: "Cerrar",
         allowOutsideClick: false,
         customClass: {
