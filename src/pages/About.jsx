@@ -8,7 +8,7 @@ export const About = () => {
         <div className="about-hero">
           <img
             src={imgAbout}
-            alt=""
+            alt="about image"
           />
         </div>
         <article className="about-article">
