@@ -1,6 +1,6 @@
 .contact {
   background-color: $bg-frame;
-  padding-top: 6vh;
+ margin-top: 6vh;
 
   .contact-hero {
     height: 50vh;
@@ -23,7 +23,7 @@
     flex-flow: row nowrap;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 94vh;
 
     .contact-hero {
       height: 100%;
@@ -34,7 +34,8 @@
       display: flex;
       align-items: center;
       width: 50vw;
-      height: 100vh;
+      height: 94vh;
+      padding-bottom: 2rem;
     }
   }
 }
