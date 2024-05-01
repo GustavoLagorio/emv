@@ -23,8 +23,8 @@ export const Footer = () => {
               </a>
             </span>
             <span className="autor2">
-              <a href="">
-                <img className="autor-logo2" src={Autor2} alt="" />
+              <a href="https://www.instagram.com/compugrossok/">
+                <img className="autor-logo2" src={Autor2} alt="CompuGross" />
               </a>
             </span>
             <span className="copyright">
