@@ -55,8 +55,7 @@ footer {
     padding: 0 0 1rem 0;
     margin-bottom: 0;
     width: 100%;
-
-    
+    max-height: 5rem;
 
     .developer {
       width: 50%;
@@ -65,14 +64,47 @@ footer {
       justify-content: start;
       align-items: center;
       padding-left: 2rem;
+
       .autor {
         width: 40%;
+        padding-top: 0.5rem;
         max-width: 120px;
+        display: flex;
 
-        .autor-logo {
+        .autor-logo1 {
+          max-height: 4rem;
           width: 100%;
-          height: auto;
-        }        
+        }
+      }
+
+      .autor2 {
+        width: 4rem;
+        max-width: 120px;
+        display: flex;
+        margin-left: 1rem;
+
+        .autor-logo2 {
+          width: 3rem;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        @media (min-width: 768px) {
+          .autor-logo2 {
+            width: 3.5rem;
+            max-height: min-content;
+          }
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .autor2 {
+          width: 5rem;
+
+          .autor-logo2 {
+            width: 4.5rem;
+          }
+        }
       }
 
       @media (min-width: 768px) {
