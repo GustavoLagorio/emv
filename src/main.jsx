@@ -10,13 +10,18 @@ import { AuthProvider } from "./context/authProvider";
 import { Home } from "./pages/Home";
 import { Collections } from "./pages/Collections";
 import { Collection } from "./pages/Collection";
+import { Collaborations } from "./pages/Collaborations";
 import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
 import { AuthAdminPanel } from "./authRoutes/AuthAdminPanel";
+import { AuthAdminCollections } from "./authRoutes/AuthAdminCollections";
 import { AuthCreateCollection } from "./authRoutes/AuthCreateCollection";
 import { AuthEditCollection } from "./authRoutes/AuthEditCollection";
+import { AuthAdminCollaborations } from "./authRoutes/AuthAdminCollaborations";
+import { AuthCreateCollaboration } from "./authRoutes/AuthCreateCollaboration";
+import { AuthEditCollaboration } from "./authRoutes/AuthEditCollaboration";
 import { Error404 } from "./pages/Error404";
 import { Layout } from "./componentes/Layout";
 import { LayoutHome } from "./componentes/LayoutHome";
@@ -45,6 +50,11 @@ const router = createBrowserRouter([
       {
         path: "collections",
         element: <Collections />,
+        errorElement: <Error404 />,
+      },
+      {
+        path: "collaborations",
+        element: <Collaborations />,
         errorElement: <Error404 />,
       },
       {
@@ -78,13 +88,33 @@ const router = createBrowserRouter([
         errorElement: <Error404 />,
       },
       {
-        path: "admin-panel/create",
+        path: "admin-panel/collections",
+        element: <AuthAdminCollections />,
+        errorElement: <Error404 />,
+      },
+      {
+        path: "admin-panel/collections/create",
         element: <AuthCreateCollection />,
         errorElement: <Error404 />,
       },
       {
-        path: "admin-panel/edit/:Id",
+        path: "admin-panel/collections/edit/:Id",
         element: <AuthEditCollection />,
+        errorElement: <Error404 />,
+      },
+      {
+        path: "admin-panel/collaborations",
+        element: <AuthAdminCollaborations />,
+        errorElement: <Error404 />,
+      },
+      {
+        path: "admin-panel/collaborations/create",
+        element: <AuthCreateCollaboration />,
+        errorElement: <Error404 />,
+      },
+      {
+        path: "admin-panel/collaborations/edit/:Id",
+        element: <AuthEditCollaboration />,
         errorElement: <Error404 />,
       },
       {

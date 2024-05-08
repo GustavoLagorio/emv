@@ -1,0 +1,99 @@
+.create-collaboration {
+  background-color: $bg-frame;
+  padding-top: 6vh;
+
+  h1 {
+    text-align: center;
+    padding-top: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .create-form {
+    height: auto;
+    font-size: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+
+    label {
+      font-size: 1.6rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      width: 100%;
+      input {
+        margin-top: 1rem;
+      }
+      input:first-child {
+        width: 100%;
+      }
+      p {
+        margin-top: 1rem;
+        text-align: center;
+      }
+    }
+    .collab-control {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+
+      label {
+        margin: 0 5% 2rem 0;
+        input {
+          text-align: center;
+        }
+      }
+      label:last-child {
+        justify-self: center;
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        span {
+          font-size: 1.6rem;
+          margin-right: 1rem;
+        }
+        input {
+          margin: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  @media(min-width: 1200px) {
+    .edit-form {
+        width: 60%;
+
+        label {
+          font-size: 2rem;
+        }
+
+        .collab-control {
+  
+          label {
+            width: 30%;
+            input {
+              text-align: center;
+            }
+          }
+          label:last-child {
+            width: 30%;
+            flex-flow: column;
+            span {
+              font-size: 2rem;
+              margin-right: 0;
+            }
+          }
+        }
+    }
+  }
+}

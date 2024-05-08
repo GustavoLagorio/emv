@@ -1,66 +1,29 @@
 .admin-panel {
-    width: 100vw;
-    padding-top: 10vh;
-    background-color: $bg-frame;
+  width: 100vw;
+  padding-top: 10vh;
+  background-color: $bg-frame;
 
   .admin-title {
     text-align: center;
     margin-bottom: 5rem;
   }
 
-  .command-create {
+  .manage-content {
     display: flex;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
 
     .btn-command {
-        background-color: $button;
-        height: 5.5rem;
-        text-align: center;
-        width: auto;
-        padding: 1rem 2rem;
-        font-size: 2rem;
-        color: $white;
-        border-radius: 0.6rem;
-      }
-  }
-
-  .collections-list {
-    margin-top: 3rem;
-
-    h2 {
-        text-align: center;
-        margin-top: 10rem;
-    }
-
-    .collection {
-        margin: 6rem 0;
-        border-bottom: 1px solid black;
-        padding-bottom: 3rem;
-
-        h3 {
-            font-size: 3rem;
-            color: black;
-            text-align: center;
-        }
-
-        .command-list {
-            display: flex;
-            flex-flow: row nowrap;
-            width: 100%;
-            justify-content: space-evenly;
-            padding: 0;
-            margin: 2rem 0;
-    
-          .command-item {
-            align-self: center;
-            width: min-content;
-    
-            .button, a.button {
-              align-self: center;
-              display: block;
-            }
-          }
-        }
+      background-color: $button;
+      height: 5.5rem;
+      text-align: center;
+      width: auto;
+      padding: 1rem 2rem;
+      font-size: 2rem;
+      color: $white;
+      border-radius: 0.6rem;
+      margin: 3rem;
     }
   }
 }

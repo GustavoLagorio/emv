@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { User } from "../componentes/User";
 import { Loading } from "../componentes/Loading";
 
-export const AdminPanel = () => {
+export const AdminCollections = () => {
   const [collections, setCollections] = useState(null);
 
   useEffect(() => {
@@ -142,14 +142,44 @@ export const AdminPanel = () => {
             <h1>DASHBOARD</h1>
           </div>
 
-          <section className="manage-content">
-            <Link className="btn-command" as={Link} to={`/admin-panel/collections`}>
-              Manage Collections
-            </Link>
-            <Link className="btn-command" as={Link} to={`/admin-panel/collaborations`}>
-              Manage Collaborations
+          <section className="command-create">
+            <Link className="btn-command" as={Link} to={`/admin-panel/collections/create`}>
+              Create new Collection
             </Link>
           </section>
+
+          <div className="collections-list">
+            <h2>Modify or delete collections</h2>
+            {collections &&
+              collections.map((collection) => (
+                <div
+                  key={collection.Id}
+                  id={`collection-${collection.Id}`}
+                  className="collection"
+                >
+                  <h3>{collection.Title}</h3>
+                  <ul className="command-list">
+                    <li className="command-item">
+                      <Link
+                        className="button"
+                        as={Link}
+                        to={`/admin-panel/collections/edit/${collection.Id}`}
+                      >
+                        Edit
+                      </Link>
+                    </li>
+                    <li className="command-item">
+                      <button
+                        className="button"
+                        onClick={() => confirmDelete(collection.Id)}
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+          </div>
         </main>
       </>
     );

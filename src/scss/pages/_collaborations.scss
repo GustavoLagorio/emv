@@ -1,0 +1,46 @@
+.collaborations {
+  background-color: $bg-frame;
+  padding-top: 6vh;
+
+  .collaborations-list {
+    padding: 4rem 0;
+
+    .collaboration {
+      width: 80%;
+      background-color: $gray;
+      margin: 1rem auto 3rem auto;
+      border-radius: 2rem;
+      box-shadow: 1px 1px 1.6px rgba(0, 0, 0, 0.014),
+        2.2px 2.2px 3.6px rgba(0, 0, 0, 0.021),
+        3.8px 3.8px 6.3px rgba(0, 0, 0, 0.027),
+        6px 6px 10px rgba(0, 0, 0, 0.032),
+        9.3px 9.3px 15.5px rgba(0, 0, 0, 0.038),
+        14.5px 14.5px 24.1px rgba(0, 0, 0, 0.044),
+        24px 24px 40px rgba(0, 0, 0, 0.052), 48px 48px 80px rgba(0, 0, 0, 0.07);
+
+      a {
+        h2 {
+          color: black;
+          margin: 0 0 1rem 0;
+          padding: 0 2rem;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: $bold;
+          text-transform: uppercase;
+        }
+        figure {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+        }
+
+        @media (min-width: 768px) {
+          h2 {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

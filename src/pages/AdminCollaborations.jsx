@@ -4,14 +4,14 @@ import Swal from "sweetalert2";
 import { User } from "../componentes/User";
 import { Loading } from "../componentes/Loading";
 
-export const AdminPanel = () => {
-  const [collections, setCollections] = useState(null);
+export const AdminCollaborations = () => {
+    const [collaborations, setCollaborations] = useState(null);
 
   useEffect(() => {
-    const obtenerCollections = async () => {
+    const obtenerCollaborations = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_COLLECTION_DEV}`,
+          `${import.meta.env.VITE_API_COLLABORATION_DEV}`,
           {
             method: "GET",
             headers: {
@@ -24,7 +24,7 @@ export const AdminPanel = () => {
           const contentType = response.headers.get("content-type");
           if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
-            setCollections(data);
+            setCollaborations(data);
           } else {
             const textData = await response.text();
           }
@@ -36,12 +36,12 @@ export const AdminPanel = () => {
       }
     };
 
-    obtenerCollections();
+    obtenerCollaborations();
   }, []);
 
   const confirmDelete = (id) => {
     Swal.fire({
-      title: "¿Desea eliminar la colección de la lista?",
+      title: "¿Desea eliminar la colaboración de la lista?",
       showCancelButton: true,
       allowEnterKey: false,
       confirmButtonColor: "#ed3b3b",
@@ -63,9 +63,9 @@ export const AdminPanel = () => {
 
   const handleSuccess = () => {
     Swal.fire({
-      title: "Colección eliminada",
-      text: "La colección se ha eliminado correctamente.",
-      confirmButtonText: "Ir al panel de administración",
+      title: "Colaboración eliminada",
+      text: "La colaboración se ha eliminado correctamente.",
+      confirmButtonText: "Ir al panel de colaboraciones",
       allowOutsideClick: false,
       customClass: {
         container: "my-swal-modal-container",
@@ -75,7 +75,7 @@ export const AdminPanel = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "/admin-panel";
+        window.location.href = "/admin-panel/collaborations";
       }
     });
   };
@@ -83,8 +83,8 @@ export const AdminPanel = () => {
   const handleFail = () => {
     Swal.fire({
       title: "Solicitud fallida",
-      text: "La colección no pudo ser eliminada.",
-      confirmButtonText: "Ir al panel de administración",
+      text: "La colaboración no pudo ser eliminada.",
+      confirmButtonText: "Ir al panel de colaboraciones",
       allowOutsideClick: false,
       customClass: {
         container: "my-swal-modal-container",
@@ -94,24 +94,24 @@ export const AdminPanel = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "/admin-panel";
+        window.location.href = "/admin-panel/collaborations";
       }
     });
   };
 
   const handleDelete = async (id) => {
-    const collectionDelete = {
+    const collaborationDelete = {
       Id: id,
     };
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_COLLECTION_DEV}`,
+        `${import.meta.env.VITE_API_COLLABORATIONS_DEV}`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(collectionDelete),
+          body: JSON.stringify(collaborationDelete),
         }
       );
 
@@ -124,7 +124,7 @@ export const AdminPanel = () => {
         handleFail();
 
         //Si falla por algun motivo navega al login para reloguear
-        console.error("Fallo la eliminacion de la colección");
+        console.error("Fallo la eliminacion de la colaboración");
         return;
       }
     } catch (error) {
@@ -133,23 +133,53 @@ export const AdminPanel = () => {
     }
   };
 
-  if (collections) {
+  if (collaborations) {
     return (
       <>
         <main className="admin-panel">
           <User />
           <div className="admin-title">
-            <h1>DASHBOARD</h1>
+            <h1>COLLABORATIONS</h1>
           </div>
 
-          <section className="manage-content">
-            <Link className="btn-command" as={Link} to={`/admin-panel/collections`}>
-              Manage Collections
-            </Link>
-            <Link className="btn-command" as={Link} to={`/admin-panel/collaborations`}>
-              Manage Collaborations
+          <section className="command-create">
+            <Link className="btn-command" as={Link} to={`/admin-panel/collaborations/create`}>
+              Create new Collaboration
             </Link>
           </section>
+
+          <div className="collaborations-list">
+            <h2>Modify or delete collaborations</h2>
+            {collaborations &&
+              collaborations.map((collaboration) => (
+                <div
+                  key={collaboration.Id}
+                  id={`collaboration-${collaboration.Id}`}
+                  className="collaboration"
+                >
+                  <h3>{collaboration.Title}</h3>
+                  <ul className="command-list">
+                    <li className="command-item">
+                      <Link
+                        className="button"
+                        as={Link}
+                        to={`/admin-panel/collaborations/edit/${collaboration.Id}`}
+                      >
+                        Edit
+                      </Link>
+                    </li>
+                    <li className="command-item">
+                      <button
+                        className="button"
+                        onClick={() => confirmDelete(collaboration.Id)}
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+          </div>
         </main>
       </>
     );
