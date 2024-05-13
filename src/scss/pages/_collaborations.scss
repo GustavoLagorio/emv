@@ -1,37 +1,50 @@
 .collaborations {
   background-color: $bg-frame;
   padding-top: 6vh;
+  min-height: 80vh;
 
   .collaborations-list {
     padding: 4rem 0;
 
     .collaboration {
       width: 80%;
-      background-color: $gray;
+      height: max-content;
+      //background-color: $gray;
       margin: 1rem auto 3rem auto;
       border-radius: 2rem;
-      box-shadow: 1px 1px 1.6px rgba(0, 0, 0, 0.014),
-        2.2px 2.2px 3.6px rgba(0, 0, 0, 0.021),
-        3.8px 3.8px 6.3px rgba(0, 0, 0, 0.027),
-        6px 6px 10px rgba(0, 0, 0, 0.032),
-        9.3px 9.3px 15.5px rgba(0, 0, 0, 0.038),
-        14.5px 14.5px 24.1px rgba(0, 0, 0, 0.044),
-        24px 24px 40px rgba(0, 0, 0, 0.052), 48px 48px 80px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      box-shadow: 4.9px 6.3px 14px rgba(0, 0, 0, 0.031),
+        7.3px 9.4px 26.7px rgba(0, 0, 0, 0.044),
+        9.2px 12px 39.2px rgba(0, 0, 0, 0.052),
+        12.6px 16.4px 54px rgba(0, 0, 0, 0.06),
+        20px 26px 81px rgba(0, 0, 0, 0.07);
 
       a {
-        h2 {
-          color: black;
-          margin: 0 0 1rem 0;
-          padding: 0 2rem;
-          text-align: center;
-          font-size: 2rem;
-          font-weight: $bold;
-          text-transform: uppercase;
+        height: 100%;
+        .title {
+          height: 10%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          h2 {
+            color: black;
+            padding: 1rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: $bold;
+            text-transform: uppercase;
+            margin: 0;
+          }
         }
+        
         figure {
           width: 100%;
+          height: 90%;
+          margin: 0;
           img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
         }
 
@@ -41,6 +54,28 @@
           }
         }
       }
+    }
+
+    @media (min-width: 768px) {
+      .collaboration {
+        height: 40vh;
+        width: 40vw;
+        margin: 1rem auto 3rem auto;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .collaboration {
+        height: 60vh;
+        width: 30vw;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .collaborations-list {
+      display: flex;
+      flex-flow: row wrap;
     }
   }
 }

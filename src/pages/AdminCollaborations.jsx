@@ -103,9 +103,11 @@ export const AdminCollaborations = () => {
     const collaborationDelete = {
       Id: id,
     };
+    console.log(collaborationDelete);
+    console.log(JSON.stringify(collaborationDelete));
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_COLLABORATIONS_DEV}`,
+        `${import.meta.env.VITE_API_COLLABORATION_DEV}`,
         {
           method: "DELETE",
           headers: {
