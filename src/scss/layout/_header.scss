@@ -127,6 +127,13 @@
   .sidebar {
     left: -51vw;
     width: 50vw;
+
+    .nav-menu {
+
+      a {
+        font-size: 3rem;
+      }
+    }
   }
 }
 
