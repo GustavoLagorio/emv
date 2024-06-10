@@ -32,7 +32,13 @@ export const Footer = () => {
             </span>
           </span>
           <span className="terms-item">
-            <Link>Privacy - Terms</Link>
+            <Link
+              to="/privacy-policy"
+              target="_blank"
+              reloadDocument
+            >
+              Privacy - Terms
+            </Link>
           </span>
         </section>
       </footer>

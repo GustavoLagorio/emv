@@ -14,6 +14,7 @@ import { Collaborations } from "./pages/Collaborations";
 import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
+import { Terms } from "./pages/Terms";
 import { Login } from "./pages/Login";
 import { AuthAdminPanel } from "./authRoutes/AuthAdminPanel";
 import { AuthAdminCollections } from "./authRoutes/AuthAdminCollections";
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+        errorElement: <Error404 />,
+      },
+      {
+        path: "privacy-policy",
+        element: <Terms />,
         errorElement: <Error404 />,
       },
       {

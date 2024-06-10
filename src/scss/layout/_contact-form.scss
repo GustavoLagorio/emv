@@ -1,102 +1,110 @@
 .contact-form {
-    padding: 6rem 0 10rem 0;
+  padding: 6rem 0 10rem 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  h2 {
+    text-align: center;
+    margin: 4rem 0;
+    font-weight: $regular;
+    font-size: 5rem;
+  }
+
+  .form {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
     justify-content: center;
 
-    h2 {
-      text-align: center;
-      margin: 4rem 0;
-      font-weight: $regular;
-      font-size: 5rem;
+    div {
+      margin: 2rem 0;
+      width: 100%;
+
+      .form-label {
+        position: absolute;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      input {
+        width: 80%;
+        margin-left: 10%;
+        height: 4rem;
+        border: solid 1px black;
+        color: black;
+        font-size: 2rem;
+        border-radius: 0.3rem;
+      }
+
+      textarea {
+        width: 80%;
+        margin-left: 10%;
+        border: solid 1px black;
+        color: black;
+        font-size: 2rem;
+        border-radius: 0.6rem;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #555454;
+        display: flex;
+        font-size: 2rem;
+        padding-left: 1rem;
+      }
     }
 
-    .form {
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
-      justify-content: center;
-
-      div {
-        margin: 2rem 0;
-        width: 100%;
-
-        .form-label {
-          position: absolute;
-          clip: rect(0 0 0 0);
-          clip-path: inset(50%);
-          width: 1px;
-          height: 1px;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-
-        input {
-          width: 80%;
-          margin-left: 10%;
-          height: 4rem;
-          border: solid 1px black;
-          color: black;
-          font-size: 2rem;
-          border-radius: 0.3rem;
-        }
-
-        textarea {
-          width: 80%;
-          margin-left: 10%;
-          border: solid 1px black;
-          color: black;
-          font-size: 2rem;
-          border-radius: 0.6rem;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-          color: #555454;
-          display: flex;
-          font-size: 2rem;
-          padding-left: 1rem;
-        }
-      }
-
-      .capcha-container {
-        width: min-content;
-      }
-
-      button {
-        margin-top: 2rem;
-        height: 5.5rem;
-        width: auto;
-        padding: 1rem 2rem;
-        font-size: 2rem;
-        font-weight: $regular;
-        color: $white;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-      }
-
-      button:hover {
+    .capcha-container {
+      width: min-content;
+    }
+    p {
+      font-size: 1.6rem;
+      text-align: center;
+      a.link {
+        text-decoration: underline;
+        font-size: 1.6rem;
         color: black;
       }
     }
+
+    button {
+      margin-top: 2rem;
+      height: 5.5rem;
+      width: auto;
+      padding: 1rem 2rem;
+      font-size: 2rem;
+      font-weight: $regular;
+      color: $white;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+        border-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      color: black;
+    }
   }
+}
 
-  @media(min-width: 992px) {
-    .contact-form {
-      width: 80%;
-      margin: 0 10%;
-      height: 100%;
-      padding: 0;
+@media (min-width: 992px) {
+  .contact-form {
+    width: 80%;
+    margin: 0 10%;
+    height: 100%;
+    padding: 0;
 
-      h2 {
-        margin: 3rem 0;
-      }
+    h2 {
+      margin: 3rem 0;
+    }
 
-      .form {
-
-        div {
-          margin: 1rem 0 1.5rem 0;
-        }
+    .form {
+      div {
+        margin: 1rem 0 1.5rem 0;
       }
     }
-          
   }
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const ContactForm = () => {
@@ -158,6 +159,7 @@ export const ContactForm = () => {
           <div className="capcha-container">
             <ReCAPTCHA sitekey={import.meta.env.VITE_CAPCHA} onChange={onChange} />,
           </div>
+          <p>By submitting the form you accept the <Link to="/privacy-policy" target="_blank" reloadDocument className="link">terms and conditions</Link>.</p>
           <button className="button" type="submit">
             Submit
           </button>

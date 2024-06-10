@@ -1,0 +1,88 @@
+.terms {
+    width: 95vw;
+    text-align: center;
+    max-width: 1200px;
+    margin: 7vh auto;    
+    a.link {
+        text-decoration: underline;
+        font-size: 1.5rem;
+        color: black;
+    }
+    @media (min-width: 768px) {
+        a.link {
+            font-size: 1.8rem;
+        }
+    }
+    h1 {
+        margin-bottom: 4rem;
+    }
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 4rem;
+        }
+    }
+    .site-data {
+        width: 95%;
+        margin: 2rem auto;
+        h2 {
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 3rem;
+            }
+        }
+        ul{
+            li{
+                font-size: 1.6rem;
+                text-align: left;
+            }
+            @media (min-width: 768px) {
+                li {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+    .data-handle{
+        width: 95%;
+        margin: 2rem auto;
+        b {
+            font-size: 1.6rem;
+        }
+        @media (min-width: 768px) {
+            b {
+                font-size: 1.8rem;
+            }
+        }
+        h2 {
+            margin: 3rem auto;
+        }
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 3rem;
+            }
+        }
+        p {
+            font-size: 1.6rem;
+            text-align: justify;
+        }
+        @media (min-width: 768px) {
+            p {
+                font-size: 1.8rem;
+            }
+        }
+        ul {
+            margin: 2rem auto;
+            li {
+                font-size: 1.6rem;
+                text-align: left;
+            }
+            @media (min-width: 768px) {
+                li {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+}
