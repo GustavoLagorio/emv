@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Loading } from "../componentes/Loading";
+import { Error404 } from "./Error404";
 
 export const Collection = () => {
   const { Id } = useParams();
@@ -38,9 +39,9 @@ export const Collection = () => {
     };
 
     obtenerCollection();
-  }, []);
+  }, []);  
 
-  if (collection) {
+  if (collection && collection.State === true) {
     const collectionGallery = collection.Gallery;
     return (
       <>

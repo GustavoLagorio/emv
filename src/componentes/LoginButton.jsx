@@ -9,9 +9,7 @@ const LoginButton = () => {
   const { auth } = useAuth();
 
   const handleSuccess = (response) => {
-    console.log(response);
     const decodedToken = jwtDecode(response.credential);
-    console.log(decodedToken);
 
     if (
       decodedToken.email == import.meta.env.VITE_MAIL_CLIENT ||

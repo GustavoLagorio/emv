@@ -88,7 +88,6 @@ export const CreateCollection = () => {
       );
 
       if (response.status === 200) {
-        console.log(response);
         handleSuccess();
         return;
       } else {

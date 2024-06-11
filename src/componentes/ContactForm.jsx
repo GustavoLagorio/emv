@@ -71,8 +71,6 @@ export const ContactForm = () => {
       Message: formData.message
     };
 
-    console.log(sanitizedFormData);
-
     // Reiniciar el formulario y limpiar el error
     setFormData({
       name: "",
@@ -92,7 +90,6 @@ export const ContactForm = () => {
       });
 
       if (response.status === 200) {
-        console.log(response);
         handleSuccess();
         return;
       } else {

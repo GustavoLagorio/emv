@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import HomeCarrousel from "../componentes/HomeCarrousel";
 import { Logo } from "../componentes/Logo";
 import { SocialLinks } from "../componentes/SocialLinks";

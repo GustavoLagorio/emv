@@ -42,7 +42,7 @@ export const Collections = () => {
     const filteredCollections = collections.filter(
       (collection) => collection.State
     );
-
+    
     return (
       <>
         <main className="collections">

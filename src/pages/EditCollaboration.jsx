@@ -37,7 +37,6 @@ export const EditCollaboration = () => {
             const data = await response.json();
             setCollaboration(data);
             if (data.State) {
-              console.log(data.State);
               setOn("on");
               setCheckValue("1");
             } else {
@@ -135,8 +134,6 @@ export const EditCollaboration = () => {
       State: form.State === undefined ? collaboration.State : form.State,
     };
 
-    console.log(updatedForm);
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_COLLABORATION_DEV}`,
@@ -150,7 +147,6 @@ export const EditCollaboration = () => {
       );
 
       if (response.status === 200) {
-        console.log(response);
         handleSuccess();
 
         return;

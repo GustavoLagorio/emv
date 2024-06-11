@@ -118,7 +118,6 @@ export const AdminCollaborations = () => {
       );
 
       if (response.status === 200) {
-        console.log(response);
         handleSuccess();
         return;
       } else {

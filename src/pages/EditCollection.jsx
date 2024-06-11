@@ -37,7 +37,6 @@ export const EditCollection = () => {
             const data = await response.json();
             setCollection(data);
             if (data.State) {
-              console.log(data.State);
               setOn("on");
               setCheckValue("1")
             } else {
@@ -137,8 +136,6 @@ export const EditCollection = () => {
       State: (form.State === undefined ? collection.State : form.State),
     };
 
-    console.log(updatedForm);
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_COLLECTION_DEV}`,
@@ -152,14 +149,12 @@ export const EditCollection = () => {
       );
 
       if (response.status === 200) {
-        console.log(response);
         handleSuccess();
 
         //Si la respuesta es 200 navega hasta el menu de Bungalows para seguir trabajando
         return;
       } else {
         handleFail();
-        console.log(response);
 
         //Si falla por algun motivo navega al login para reloguear
         console.error("Inicio de sesión fallido");

@@ -39,8 +39,6 @@ export const Collaborations = () => {
   }, []);
 
   if (collaborations) {
-    console.log(collaborations[0].Title);
-    console.log(collaborations[0].ImageLink);
     const filteredCollaborations = collaborations.filter(
       (collaboration) => collaboration.State
     );
