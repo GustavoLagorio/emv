@@ -1,5 +1,6 @@
 .button, a.button {
     background-color: $button;
+    border: 1px solid $gray;
     height: auto;
     width: auto;
     padding: 0.7rem 1.4rem;
@@ -11,7 +12,6 @@
   }
 
   .button:hover, a.button:hover {
-    border: 1px solid $gray;
     background: none;
     color: black;
   }

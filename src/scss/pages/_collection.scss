@@ -43,4 +43,32 @@
       }
     }
   }
+
+  .collection-navigation {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 95%;
+    margin: 2rem auto;
+    justify-content: space-between;
+    align-items: center;
+    .prev-navigation {
+      max-width: 45%;
+      display: flex;
+      text-align: center;
+
+      a {
+        width: 100%;
+      }
+    }
+
+    .next-navigation {
+      max-width: 45%;
+      display: flex;
+      text-align: center;
+
+      a {
+        width: 100%;
+      }
+    }
+  }
 }
