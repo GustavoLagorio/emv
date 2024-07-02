@@ -52,22 +52,24 @@
     justify-content: space-between;
     align-items: center;
     .prev-navigation {
-      max-width: 45%;
+      width: 10rem;
       display: flex;
       text-align: center;
 
       a {
         width: 100%;
+        font-size: 1.5rem;
       }
     }
 
     .next-navigation {
-      max-width: 45%;
+      width: 10rem;
       display: flex;
       text-align: center;
 
       a {
         width: 100%;
+        font-size: 1.4rem;
       }
     }
   }

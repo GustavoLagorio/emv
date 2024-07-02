@@ -9,7 +9,7 @@ export const Collections = () => {
     const obtenerCollections = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_COLLECTION_DEV}`,
+          `${import.meta.env.VITE_API_COLLECTION_DEV}?state=${'true'}`,
           {
             method: "GET",
             headers: {
@@ -42,6 +42,8 @@ export const Collections = () => {
     const filteredCollections = collections.filter(
       (collection) => collection.State
     );
+
+    console.log(collections);
     
     return (
       <>

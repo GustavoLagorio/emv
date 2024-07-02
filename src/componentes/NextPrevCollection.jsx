@@ -9,7 +9,6 @@ export const NextPrevCollection = ({
 
   if (indexOfCollection == 0) {
     const nextCollection = filteredCollections[1].Id;
-    const nextCollectioTitle = filteredCollections[1].Title;
     return (
       <div className="collection-navigation">
         <div className="prev-navigation"></div>
@@ -19,7 +18,7 @@ export const NextPrevCollection = ({
             reloadDocument
             className="button btn-home"
           >
-            {nextCollectioTitle}
+            Next
           </Link>
         </div>
       </div>
@@ -27,7 +26,6 @@ export const NextPrevCollection = ({
   } else if (lastIndexOfCollection == filteredCollections.length) {
     const prevCollectionIndex = indexOfCollection - 1;
     const prevCollection = filteredCollections[prevCollectionIndex].Id;
-    const prevCollectioTitle = filteredCollections[prevCollectionIndex].Title;
     return (
       <div className="collection-navigation">
         <div className="prev-navigation">
@@ -36,7 +34,7 @@ export const NextPrevCollection = ({
             reloadDocument
             className="button btn-home"
           >
-            {prevCollectioTitle}
+            Previous
           </Link>
         </div>
         <div className="next-navigation"></div>
@@ -47,8 +45,6 @@ export const NextPrevCollection = ({
     const nextCollectionIndex = indexOfCollection + 1;
     const prevCollection = filteredCollections[prevCollectionIndex].Id;
     const nextCollection = filteredCollections[nextCollectionIndex].Id;
-    const prevCollectioTitle = filteredCollections[prevCollectionIndex].Title;
-    const nextCollectioTitle = filteredCollections[nextCollectionIndex].Title;
 
     return (
       <div className="collection-navigation">
@@ -58,7 +54,7 @@ export const NextPrevCollection = ({
             reloadDocument
             className="button btn-home"
           >
-            {prevCollectioTitle}
+            Previous
           </Link>
         </div>
         <div className="next-navigation">
@@ -67,7 +63,7 @@ export const NextPrevCollection = ({
             reloadDocument
             className="button btn-home"
           >
-            {nextCollectioTitle}
+            Next
           </Link>
         </div>
       </div>
