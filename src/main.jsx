@@ -10,7 +10,6 @@ import { AuthProvider } from "./context/authProvider";
 import { Home } from "./pages/Home";
 import { Collections } from "./pages/Collections";
 import { Collection } from "./pages/Collection";
-import { Collaborations } from "./pages/Collaborations";
 import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
@@ -51,11 +50,6 @@ const router = createBrowserRouter([
       {
         path: "collections",
         element: <Collections />,
-        errorElement: <Error404 />,
-      },
-      {
-        path: "collaborations",
-        element: <Collaborations />,
         errorElement: <Error404 />,
       },
       {
