@@ -41,7 +41,7 @@ export const CreateCollection = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "/admin-panel";
+        window.location.href = "/admin-panel/collections";
       }
     });
   };

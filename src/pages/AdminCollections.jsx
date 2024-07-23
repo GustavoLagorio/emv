@@ -75,7 +75,7 @@ export const AdminCollections = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = "/admin-panel";
+        window.location.href = "/admin-panel/collections";
       }
     });
   };
@@ -133,6 +133,10 @@ export const AdminCollections = () => {
     }
   };
 
+  const previousPage = () => {
+    window.location.href = "/admin-panel";
+  };
+
   if (collections) {
     return (
       <>
@@ -140,10 +144,28 @@ export const AdminCollections = () => {
           <User />
           <div className="admin-title">
             <h1>DASHBOARD</h1>
+            <span>
+              <button className="back-button" onClick={() => previousPage()}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="4rem"
+                  height="4rem"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="black"
+                    d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326a.75.75 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06"
+                  />
+                </svg>
+              </button>
+            </span>
           </div>
-
           <section className="command-create">
-            <Link className="btn-command" as={Link} to={`/admin-panel/collections/create`}>
+            <Link
+              className="btn-command"
+              as={Link}
+              to={`/admin-panel/collections/create`}
+            >
               Create new Collection
             </Link>
           </section>
@@ -184,8 +206,6 @@ export const AdminCollections = () => {
       </>
     );
   } else {
-    return (
-      <Loading />
-    )
+    return <Loading />;
   }
 };
