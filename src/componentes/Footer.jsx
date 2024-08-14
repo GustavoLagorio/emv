@@ -1,5 +1,5 @@
 import React from "react";
-import Autor1 from "../assets/autor1_logo.jpeg";
+import Autor1 from "../assets/autor1_logo.svg";
 import Autor2 from "../assets/autor2_logo.jpg";
 import { Link } from "react-router-dom";
 import { SocialLinks } from "./SocialLinks";

@@ -1,0 +1,29 @@
+<svg width="341" height="134" viewBox="0 0 341 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M38.016 133.792C21.504 133.792 7.04 120.608 7.04 98.08C7.04 75.168 21.504 62.112 38.016 62.112C54.528 62.112 68.864 75.168 68.864 98.08C68.864 120.608 54.528 133.792 38.016 133.792ZM38.016 127.264C51.328 127.264 61.184 115.488 61.184 98.08C61.184 80.544 51.328 68.512 38.016 68.512C24.576 68.512 14.848 80.544 14.848 98.08C14.848 115.488 24.576 127.264 38.016 127.264ZM90.08 133.792C83.936 133.792 80.992 129.824 80.992 121.888V30.368H88.544V122.656C88.544 125.856 89.696 127.264 91.488 127.264C92.128 127.264 92.64 127.264 94.048 127.008L95.2 133.024C93.792 133.408 92.512 133.792 90.08 133.792ZM107.312 132V63.776H114.864V132H107.312ZM111.152 47.776C107.696 47.776 105.264 45.472 105.264 41.504C105.264 38.048 107.696 35.616 111.152 35.616C114.608 35.616 117.04 38.048 117.04 41.504C117.04 45.472 114.608 47.776 111.152 47.776Z" fill="#272728" />
+                        <g clip-path="url(#clip0_181_3)">
+                            <rect width="213" height="126" transform="translate(127 6)" fill="#272728" />
+                            <path d="M176 74.3665C176 108.188 176 125.866 176 125.866H234V74.3665C234 40.5444 176 40.5445 176 74.3665Z" stroke="#FFFEFE" stroke-width="18" />
+                            <path d="M234 74.3665C234 108.188 234 125.866 234 125.866H292V74.3665C292 40.5444 234 40.5445 234 74.3665Z" stroke="#FFFEFE" stroke-width="18" />
+                        </g>
+                        <line x1="340.105" y1="28.6016" x2="127.003" y2="29.0005" stroke="white" stroke-width="4" />
+                        <line x1="179.156" y1="55.2021" x2="126.992" y2="55" stroke="white" stroke-width="4" />
+                        <line x1="340.102" y1="55.2021" x2="289.56" y2="55.2021" stroke="white" stroke-width="4" />
+                        <line x1="169.865" y1="81.8027" x2="127.009" y2="81.9995" stroke="white" stroke-width="4" />
+                        <line x1="180" y1="27" x2="180" y2="6" stroke="white" stroke-width="4" />
+                        <path d="M234 27L234 6" stroke="white" stroke-width="4" />
+                        <path d="M286 27L286 6" stroke="white" stroke-width="4" />
+                        <line x1="152" y1="53.6006" x2="152" y2="26.9996" stroke="white" stroke-width="4" />
+                        <path d="M206 53.6006L206 26.9996" stroke="white" stroke-width="4" />
+                        <path d="M258 53.6006L258 26.9996" stroke="white" stroke-width="4" />
+                        <path d="M310 53.6006L310 26.9996" stroke="white" stroke-width="4" />
+                        <line x1="151" y1="107.601" x2="151" y2="80.9996" stroke="white" stroke-width="4" />
+                        <path d="M309 108L309 84" stroke="white" stroke-width="4" />
+                        <line x1="170" y1="108" x2="127" y2="108" stroke="white" stroke-width="4" />
+                        <line x1="340.102" y1="110.234" x2="297.54" y2="110.234" stroke="white" stroke-width="5" />
+                        <line x1="340.102" y1="82.3027" x2="297.54" y2="82.3027" stroke="white" stroke-width="5" />
+                        <defs>
+                            <clipPath id="clip0_181_3">
+                                <rect width="213" height="126" fill="white" transform="translate(127 6)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
