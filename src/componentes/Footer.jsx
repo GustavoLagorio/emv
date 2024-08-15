@@ -14,7 +14,7 @@ export const Footer = () => {
         <section className="terms">
           <span className="developer">
             <span className="autor">
-              <a href="">
+              <a href="https://www.instagram.com/olib.digitalbridge/">
                 <img
                   className="autor-logo1"
                   src={Autor1}
